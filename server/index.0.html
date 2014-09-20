@@ -398,7 +398,7 @@ data-type="1"		 style="display: none;">
 <script src="http://weixiaoxinpic.qiniudn.com/Public/fangyan/WeixinApi.min.js"></script>
 <script type="text/javascript">
     // var audio = new Audio();
-    var total = '10';
+    var total = '2';
     var tScore = 0;
     var scoreArr = new Array();
         scoreArr[0] = 0;
@@ -436,6 +436,7 @@ data-type="1"		 style="display: none;">
     }
 
     function result(t){
+		alert(t)
         console.log("得分"+tScore);
         $(".panel-body").hide();
         for (var i = scoreArr.length - 1; i >= 0; i--) {
@@ -462,6 +463,7 @@ data-type="1"		 style="display: none;">
     }
 
     function toggle(t){
+		alert(t);
 		console.log("当前得分"+score);
         $(".list-group-item").removeClass('active')
         var score = $(t).attr("data-score");
