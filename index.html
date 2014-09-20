@@ -124,6 +124,23 @@
 			 
 	 	 </div>
 			
+			<div id="panel3" class="panel-body js_result" data-id="0" style="display:none;">
+            <h1 class="bold text-danger">考试成绩：0分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>看来你真是外地人，好吧！河南人民欢迎你！凭分享记录可至东方金柜KTV领取200元房费卡一张！</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-success btn-block" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+			<div class="buttons buttons2">
+                <a href="http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd" class="btn btn-danger btn-danger2 btn-block"> 一键关注</a>
+            </div>        </div>
+			
+			
 			<div id="panel3" class="panel-body js_result" data-id="1" style="display:none;">
             <h1 class="bold text-danger">考试成绩：10分</h1>
             <hr>
@@ -139,6 +156,7 @@
 			<div class="buttons buttons2">
                 <a href="http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd" class="btn btn-danger btn-danger2 btn-block"> 一键关注</a>
             </div>        </div>
+			
 			<div id="panel3" class="panel-body js_result" data-id="2" style="display:none;">
             <h1 class="bold text-danger">考试成绩：20分</h1>
 			
@@ -351,7 +369,13 @@
         for (var i = scoreArr.length - 1; i >= 0; i--) {
             if ( parseInt(t) >= parseInt(scoreArr[i]) ) {
                 console.log("应该弹"+i);
-                $(".js_result").eq(i-1).show();
+				alert
+				if(i==0){
+					$(".js_result").eq(-0).show();
+				}else{
+					$(".js_result").eq(i).show();
+				}
+                
                 if(i>(total/2)){
                     $('#sicon').html('<span class="glyphicon glyphicon-thumbs-up"></span>');
                 }
