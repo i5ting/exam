@@ -97,8 +97,8 @@
 
 <div class="container">
 	    <div class="text-center header">
-        <h1 class="bold">河南话专业八级考试</h1>
-        <p>已有3249448人参考</p>
+        <h1 class="bold"><span id='all_name_pan'>小桑测试</span></h1>
+        <p>已有<span id='all_count_pan'>0</span>人参考</p>
         <div class="avatar1 text-center">
             <div class="img-circle" id="sicon">
                 <span class="glyphicon glyphicon-pencil"></span>
@@ -395,6 +395,10 @@
 		$.get('server/api.json',function(data){
 			var questions = data.data.questions;
 			console.log(questions);
+			
+			$('#all_name_pan').html(data.data.name);
+			$('#all_count_pan').html(data.data.count);
+			
 			
 			total = questions.length
 			
