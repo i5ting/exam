@@ -352,7 +352,7 @@
             if ( parseInt(t) >= parseInt(scoreArr[i]) ) {
                 console.log("应该弹"+i);
                 $(".js_result").eq(i-1).show();
-                if(i>(10/2)){
+                if(i>(total/2)){
                     $('#sicon').html('<span class="glyphicon glyphicon-thumbs-up"></span>');
                 }
                 else{
