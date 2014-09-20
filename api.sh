@@ -1,3 +1,3 @@
 #! /bin/bash
 
-http-server server --cors -p 9090 
+http-server . --cors -p 9090 -o

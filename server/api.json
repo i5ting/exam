@@ -19,7 +19,7 @@
 					{
 						"label":"注意没注意",
 						"is_answer":true
-					}
+					},
 					{
 						"label":"呼噜呼噜",
 						"is_answer":true
@@ -38,7 +38,7 @@
 					{
 						"label":"蛐蛐",
 						"is_answer":true
-					}
+					},
 					{
 						"label":"蚯蚓",
 						"is_answer":true
