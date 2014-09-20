@@ -109,7 +109,7 @@
         <div id="panel1" class="panel-body">
             <dl>
                 <dd style="font-size:18px;">
-				友情提示：不准携带通讯工具，不准交头接耳、 一经发现，取消考试成绩，并终生禁止再次参与本考试！一定要记得哦！				</dd>
+				<span id='all_desc_pan'>....</span>			</dd>
             </dl>
             <div class="buttons">
                 <a href="#result" class="btn btn-danger btn-danger1 btn-block" onclick="return next(0);"> 开始测试</a>
@@ -369,7 +369,7 @@
         for (var i = scoreArr.length - 1; i >= 0; i--) {
             if ( parseInt(t) >= parseInt(scoreArr[i]) ) {
                 console.log("应该弹"+i);
-				alert
+				
 				if(i==0){
 					$(".js_result").eq(-0).show();
 				}else{
@@ -424,6 +424,10 @@
 			if(data.data.is_ad){
 				
 			}
+			
+			$('title').html(data.data.name)
+			
+			$('#all_desc_pan').html(data.data.desc);
 			
 			$('#all_name_pan').html(data.data.name);
 			$('#all_count_pan').html(data.data.count);
