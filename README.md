@@ -36,3 +36,11 @@ index.html?wid=42755&id=87&r=73753&from=singlemessage&isappinstalled=0
 		    </div>        
 		</div>
 	</div>
+	
+	
+## open
+
+	open -a /Applications/Google\ Chrome.app --args --disable-web-security
+
+
+

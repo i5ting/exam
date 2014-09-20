@@ -401,33 +401,68 @@
 			$.each(questions,function(i){
 				console.log(questions[i]);
 				
+				var currentQuestion = questions[i];
+				
+				var answerHtml = "";
+				$.each(currentQuestion.answers,function(j){
+					var cAnswer = currentQuestion.answers[j];
+					
+					// {
+// 						"label":"注意没注意",
+// 						"is_answer":true
+// 					},
+//
+					var data_score = 0;
+					if(cAnswer.is_answer){
+						data_score = 10;
+					}
+					
+					function iToChar(z){
+						switch(z)
+						{
+							case 0:
+							  return "A";
+							  break;
+							case 1:
+							  return "B";
+							  break;
+							case 2:
+							  return "C";
+							  break;
+							case 3:
+							  return "D";
+							  break;
+							case 4:
+							  return "E";
+							  break;
+							default:
+						 	
+						} 
+					}
+					
+					answerHtml += ""+"	<li class='list-group-item' data-score='"
+									+ data_score
+									+"' onclick='return toggle(this);'>"
+									+"		<i class='glyphicon glyphicon-unchecked'></i>"+iToChar(j)+" "+ cAnswer.label+" "
+									+"	</li>"; 
+									
+									
+				});
+			 
+				
 				var html = "<div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;'>"
 				    +"<dl>"
 					+"	<dd><p>看到那几个孩子在哪里藏老门二突然发现自己老了！藏老门是是弄啥了？</p></dd>				"
 				    +"</dl>"
 				    +"<ul class='list-group js_group'>"
-					+"	<li class='list-group-item' data-score='0' onclick='return toggle(this);'>"
-					+"		<i class='glyphicon glyphicon-unchecked'></i>A 把门藏起来"
-					+"	</li>				"
-					+"	<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-					+"		<i class='glyphicon glyphicon-unchecked'></i>B 捉迷藏"
-					+"	</li>				"
-					+"	<li class='list-group-item' data-score='0' onclick='return toggle(this);'>"
-					+"		<i class='glyphicon glyphicon-unchecked'></i>"
-					+"		C 唐三藏"
-					+"	</li>		"
-					+"	<li class='list-group-item' data-score='0' onclick='return toggle(this);'>"
-					+"		<i class='glyphicon glyphicon-unchecked'></i>"
-					+"		D 找老门"
-					+"	</li>		"																								
-
-		+"		    </ul>"
-		+"			<div class='buttons buttons2'>"
-		+"		        <a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'> "
-		+"					一键关注"
-		+"				</a>"
-		+"		    </div>    "
-		+"		</div>";
+							+ answerHtml																					
+					+"</ul>"
+					+"<div class='buttons buttons2'>"
+					+"<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'> "
+					+"一键关注"
+					+"</a>"
+					+"</div>    "
+					+"</div>";
 				
 				$("#timu_shengcheng_container").append(html);
 			});
