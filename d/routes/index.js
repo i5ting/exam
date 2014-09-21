@@ -21,25 +21,24 @@ router.get('/', function(req, res) {
 	 ws.write(o); 
 	 ws.end(); // 目前和destroy()和destroySoon()一样 
 	 
-	 
-	var source = bufferHelper.toBuffer().toString();
-	var template = Handlebars.compile(source);
+	  
 	
 	
-	var rs = fs.createReadStream('res/template.html', {encoding: 'utf-8', bufferSize: 11}); 
-	var bufferHelper = new BufferHelper();
-
-	rs.on("data", function (trunk){
-			bufferHelper.concat(trunk);
-	});
-
-	rs.on("end", function () {
-		var source = bufferHelper.toBuffer().toString();
-		var template = Handlebars.compile(source);
-
-	});
-	
-	 res.render('index', { title: 'Express' });
+	// var rs = fs.createReadStream('public/template.html', {encoding: 'utf-8', bufferSize: 11});
+	// var bufferHelper = new BufferHelper();
+	//
+	// rs.on("data", function (trunk){
+	// 	bufferHelper.concat(trunk);
+	// });
+	//
+	// rs.on("end", function () {
+	// 	var source = bufferHelper.toBuffer().toString();
+	// 	var template = Handlebars.compile(source);
+	//
+	// 	console.log(source);
+	// });
+	//
+	res.render('index', { title: 'Express' });
  
 });
 
