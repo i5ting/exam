@@ -44,3 +44,33 @@ index.html?wid=42755&id=87&r=73753&from=singlemessage&isappinstalled=0
 
 
 
+## express 
+
+	➜  exam git:(master) express --hbs web
+
+	   create : web
+	   create : web/package.json
+	   create : web/app.js
+	   create : web/public
+	   create : web/public/javascripts
+	   create : web/public/images
+	   create : web/public/stylesheets
+	   create : web/public/stylesheets/style.css
+	   create : web/routes
+	   create : web/routes/index.js
+	   create : web/routes/users.js
+	   create : web/views
+	   create : web/views/index.hbs
+	   create : web/views/layout.hbs
+	   create : web/views/error.hbs
+	   create : web/bin
+	   create : web/bin/www
+
+	   install dependencies:
+	     $ cd web && npm install
+
+	   run the app:
+	     $ DEBUG=web ./bin/www
+	 
+	 
+	 
