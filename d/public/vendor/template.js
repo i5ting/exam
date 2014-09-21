@@ -12,7 +12,7 @@ function play(url){
 	$('.stop').show();
 }
 // var audio = new Audio();
-var total = '2';
+var total = '4';
 var tScore = 0;
 var scoreArr = new Array();
     scoreArr[0] = 0;
