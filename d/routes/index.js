@@ -24,19 +24,27 @@ router.get('/', function(req, res) {
 	  
 	
 	
-	// var rs = fs.createReadStream('public/template.html', {encoding: 'utf-8', bufferSize: 11});
-	// var bufferHelper = new BufferHelper();
-	//
-	// rs.on("data", function (trunk){
-	// 	bufferHelper.concat(trunk);
-	// });
-	//
-	// rs.on("end", function () {
-	// 	var source = bufferHelper.toBuffer().toString();
-	// 	var template = Handlebars.compile(source);
-	//
-	// 	console.log(source);
-	// });
+	var rs = fs.createReadStream('public/template.html', {encoding: 'utf-8', bufferSize: 11});
+	var bufferHelper = new BufferHelper();
+
+	rs.on("data", function (trunk){
+		bufferHelper.concat(trunk);
+	});
+
+	rs.on("end", function () {
+		var source = bufferHelper.toBuffer().toString();
+		var template = Handlebars.compile(source);
+
+		console.log(source + i);
+
+		var template = Handlebars.compile(source);
+		var dddd = template(i);
+				
+	   	var ws1 = fs.createWriteStream('public/dataStream.html', { encoding: "utf8" })
+
+	   	ws1.write(dddd); 
+	   	ws1.end(); 
+	});
 	//
 	res.render('index', { title: 'Express' });
  
