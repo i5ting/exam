@@ -41,10 +41,13 @@ router.get('/', function(req, res) {
 		var template = Handlebars.compile(source);
 		var dddd = template(i);
 				
-	   	var ws1 = fs.createWriteStream('public/'+pid+'.html', { encoding: "utf8" })
+	   	var ws1 = fs.createWriteStream('public/html/'+pid+'.html', { encoding: "utf8" })
 
 	   	ws1.write(dddd); 
 	   	ws1.end(); 
+		
+		var open = require("open");
+		open("http://127.0.0.1:3000/html/"+pid+".html");
 	});
 	//
 	res.render('index', { title: 'Express' ,uuid:pid});

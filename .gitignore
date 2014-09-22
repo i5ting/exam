@@ -1,3 +1,5 @@
 old
 dist
 dist.tar
+
+d/public/html/*.html
