@@ -19,7 +19,7 @@ function mid_processing(origin_obj) {
 	
 	// 设置问题答案个数
 	function _set_answers_count(question){
-		question.answers_count = question.answers;
+		question.answers_count = question.answers.length;
 	}
 	
 	// 设置答案前占位符号
@@ -60,6 +60,7 @@ function mid_processing(origin_obj) {
 		
 		var right_answer_count = 0;
 		
+		question.right_answer_array = [];
 		
 		for(var j = 0;j < answers.length; j++){
 			var answer = answers[j];
@@ -67,6 +68,7 @@ function mid_processing(origin_obj) {
 			if (answer.is_answer) {
 				right_answer_count ++;
 				question.right_answer_count = right_answer_count;
+				question.right_answer_array.push(j);
 			}
 			
 			// 设置答案前占位符号

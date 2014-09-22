@@ -59,7 +59,12 @@
 				  {{#each questions}}
 				  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;'>
 				  	<dl>
-				  		<dd><p>{{label}}</p></dd>				
+				  		<dd>
+							<p>
+								{{label}}/有{{answers_count}}个答案，正确答案有{{right_answer_count}}个
+								/{{right_answer_array}}
+							</p>
+						</dd>				
 				  	</dl>
 				  	<ul class='list-group js_group'>
 							 {{#each answers}}
