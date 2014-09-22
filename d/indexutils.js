@@ -48,7 +48,7 @@ function mid_processing(origin_obj) {
 			} 
 		}
 		
-		answer.label =  iToChar(i) + ' '+ answer.label
+		answer.label = ' ' + iToChar(i) + ' '+ answer.label
 		
 		return answer;
 	}
@@ -68,7 +68,7 @@ function mid_processing(origin_obj) {
 			if (answer.is_answer) {
 				right_answer_count ++;
 				question.right_answer_count = right_answer_count;
-				question.right_answer_array.push(j);
+				question.right_answer_array.push(j + 1);
 			}
 			
 			// 设置答案前占位符号
