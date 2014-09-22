@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Handlebars = require('handlebars');
-
+var uuid = require('node-uuid');
 var BufferHelper = require('bufferhelper');
 
 /* GET home page. */
@@ -22,7 +22,8 @@ router.get('/', function(req, res) {
 	 ws.end(); // 目前和destroy()和destroySoon()一样 
 	 
 	  
-	
+	 // Generate a v1 (time-based) id
+	var pid = uuid.v1(); // -> '6c84fb90-12c4-11e1-840d-7b25c5ee775a'
 	
 	var rs = fs.createReadStream('public/template.html', {encoding: 'utf-8', bufferSize: 11});
 	var bufferHelper = new BufferHelper();
@@ -40,13 +41,13 @@ router.get('/', function(req, res) {
 		var template = Handlebars.compile(source);
 		var dddd = template(i);
 				
-	   	var ws1 = fs.createWriteStream('public/dataStream.html', { encoding: "utf8" })
+	   	var ws1 = fs.createWriteStream('public/'+pid+'.html', { encoding: "utf8" })
 
 	   	ws1.write(dddd); 
 	   	ws1.end(); 
 	});
 	//
-	res.render('index', { title: 'Express' });
+	res.render('index', { title: 'Express' ,uuid:pid});
  
 });
 
