@@ -4,6 +4,8 @@ var Handlebars = require('handlebars');
 var uuid = require('node-uuid');
 var BufferHelper = require('bufferhelper');
 
+var indexutils = require('../indexutils');
+
 /* GET home page. */
 router.get('/', function(req, res) {
 	
@@ -39,7 +41,10 @@ router.get('/', function(req, res) {
 		console.log(source + i);
 
 		var template = Handlebars.compile(source);
-		var dddd = template(i);
+		
+		// new
+		var new_obj = indexutils.mid_processing(i);
+		var dddd = template(new_obj);
 				
 	   	var ws1 = fs.createWriteStream('public/html/'+pid+'.html', { encoding: "utf8" })
 
