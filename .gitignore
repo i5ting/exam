@@ -3,3 +3,4 @@ dist
 dist.tar
 d/public/html/*.html
 d/public/dataStream.json
+d/npm-debug.log
