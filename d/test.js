@@ -55,7 +55,7 @@ rs.on("end", function () {
 			 }
 			 
 			 if (type === 2){
-				 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+				 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
 					+  "<i class='glyphicon glyphicon-unchecked'></i>"
 					+  answer.label
 					+ "</li>";
@@ -69,6 +69,39 @@ rs.on("end", function () {
 		 }
 	 
 	  	 return  new Handlebars.SafeString(html);
+	});
+	
+	Handlebars.registerHelper('qustionBottomTag', function(question) {
+		// <div class='buttons buttons2'>
+		// 	  		<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>
+		// 	  		一键关注
+		// 	  		</a>
+		// 	  	</div>
+		var type = parseInt(question.type);//问题类似
+		
+		var html = '';
+		
+		if (type === 0){
+			
+		}
+		
+		if (type === 1){
+			
+		}
+		
+		if (type === 2){
+			html += "<div class='buttons buttons2'  onclick='return next_btn(this);'>"
+			  	+ "<a class='btn btn-info btn-block'>下一个</a>"
+				+ "</div>";
+		}
+		
+		html += "<div class='buttons buttons2'>"
+			+ "	<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>"
+		  	+ "一键关注"
+			+ "</a>"
+			+ "</div>";
+		
+		return  new Handlebars.SafeString(html);
 	});
 	
 
