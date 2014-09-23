@@ -48,17 +48,33 @@ rs.on("end", function () {
 			 var answer = obj.answers[i];
 			 
 			 if (type === 1){
-				 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-					+  "<i class='glyphicon glyphicon-unchecked'></i>"
-					+  answer.label
-					+ "</li>";
+				 if(answer.is_answer == true){
+					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+						+  "<i class='glyphicon glyphicon-unchecked'><span>答案</span></i>"
+						+  answer.label
+						+ "</li>";
+				 }else{
+					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+						+  "<i class='glyphicon glyphicon-unchecked'></i>"
+						+  answer.label
+						+ "</li>";
+				 }
+				 
 			 }
 			 
 			 if (type === 2){
-				 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
-					+  "<i class='glyphicon glyphicon-unchecked'></i>"
-					+  answer.label
-					+ "</li>";
+				 if(answer.is_answer == true){
+					 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
+						+  "<i class='glyphicon glyphicon-unchecked'><span>答案</span></i>"
+						+  answer.label
+						+ "</li>";
+				 }else{
+					 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
+						+  "<i class='glyphicon glyphicon-unchecked'></i>"
+						+  answer.label
+						+ "</li>";
+					 
+				 }
 			 }
 			 
 			 if (type === 0){

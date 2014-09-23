@@ -89,8 +89,27 @@ function toggle_only(t){
     var score = $(t).attr("data-score");
     tScore  = parseInt(tScore) + parseInt(score);
 	
+	var iii = $(t).find('i').find('span').length > 0 ? true :false;
+	
+	var a_count = $(t).parent().find('span').length 
+	
+	// alert(a_count);
+	
+	
 	if( $(t).find('i').hasClass('glyphicon-unchecked')){
+		// alert(iii);
+		$(t).find('i').find('span').addClass('right');
 		$(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
+		
+		var b_count = $(t).parent().find('span.right').length 
+		var c_count = $(t).parent().find('i.glyphicon-ok').length 
+		
+		if(a_count == b_count && b_count == c_count){
+			alert(' 完全答对了 ');
+			$(t).parent().css('border','5px dashed green');
+		}
+		
+		
 	}else{
 		$(t).find('i').removeClass('glyphicon-ok').addClass('glyphicon-unchecked');
 	}
@@ -138,10 +157,17 @@ function next_btn(t) {
 	});
 	console.log(user_answers_index_array);
 	$(t).closest('#panel2').data('user_answers_index_array', user_answers_index_array);
+	
+	
 	//console.log(p)
 	console.log(user_answers);
 	
-    var t = $(".js_answer").index($(t).parents(".js_answer")) + 1;
+	var current = $(".js_answer").index($(t).parents(".js_answer")) 
+	$('#result').data(current + "", user_answers_index_array);
+	
+	console.log( $('#result').data(current+ "") );
+	
+    var t = current + 1;
 	//音乐播放beg
 	$('.btn').show();
     $('.stop').hide();
