@@ -91,7 +91,6 @@ function toggle_only(t){
 	
 	var iii = $(t).find('i').find('span').length > 0 ? true :false;
 	
-	var a_count = $(t).parent().find('span').length 
 	
 	// alert(a_count);
 	
@@ -101,17 +100,11 @@ function toggle_only(t){
 		$(t).find('i').find('span').addClass('right');
 		$(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
 		
-		var b_count = $(t).parent().find('span.right').length 
-		var c_count = $(t).parent().find('i.glyphicon-ok').length 
-		
-		if(a_count == b_count && b_count == c_count){
-			alert(' 完全答对了 ');
-			$(t).parent().css('border','5px dashed green');
-		}
-		
-		
+	
+		show_result(t);
 	}else{
 		$(t).find('i').removeClass('glyphicon-ok').addClass('glyphicon-unchecked');
+		show_result(t);
 	}
     
     var t = $(".js_answer").index($(t).parents(".js_answer")) + 1;
@@ -120,6 +113,20 @@ function toggle_only(t){
     $('.stop').hide();
 }
 
+function show_result(t){
+	var a_count = $(t).parent().find('span').length 
+	var b_count = $(t).parent().find('span.right').length 
+	var c_count = $(t).parent().find('i.glyphicon-ok').length 
+	
+	if(a_count == b_count && b_count == c_count){
+		// alert(' 完全答对了 ');
+		$(t).parent().css('border','5px dashed green');
+	}else{
+		// alert(' 答错了 ');
+		$(t).parent().css('border','5px dashed red');
+	}
+	
+}
 // 单选
 function toggle(t){
 	console.log("当前得分"+score);
@@ -176,8 +183,7 @@ function next_btn(t) {
 	// alert(t);
     if(t == total){
         result(tScore);
-    }
-    else{
+    }else{
         setTimeout(function(){next(t);},300);
     }
 }
