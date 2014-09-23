@@ -38,13 +38,54 @@ router.get('/', function(req, res) {
 		var source = bufferHelper.toBuffer().toString();
 		var template = Handlebars.compile(source);
 
-		console.log(source + i);
+		Handlebars.registerHelper('fullName', function(obj) {
+		  return "【"+ obj.type_desc+"题目】"+ obj.label + " 总共有" + obj.answers_count+ "个答案，正确答案有"+obj.right_answer_count+"个/正确答案是("+obj.right_answer_array+")";
+		});
+	
+	
+		Handlebars.registerHelper('answersTag', function(obj) {
+			 // <li class='list-group-item' data-score='10' onclick='return toggle(this);'>
+			 // 	<i class='glyphicon glyphicon-unchecked'></i>
+			 // 	{{label}}
+			 // </li>
+		 	 var type = parseInt(obj.type);//问题类似
+		 
+			 var html = ""
+			 for(var i = 0; i < obj.answers.length; i++){
+				 var answer = obj.answers[i];
+			 
+				 if (type === 1){
+					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+						+  "<i class='glyphicon glyphicon-unchecked'></i>"
+						+  answer.label
+						+ "</li>";
+				 }
+			 
+				 if (type === 2){
+					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+						+  "<i class='glyphicon glyphicon-unchecked'></i>"
+						+  answer.label
+						+ "</li>";
+				 }
+			 
+				 if (type === 0){
+				 	html += "<h1>没有答案</h1>";
+				 }
+			 
+			 
+			 }
+	 
+		  	 return  new Handlebars.SafeString(html);
+		});
+	
 
 		var template = Handlebars.compile(source);
-		
-		// new
+	
+		// new 
 		var new_obj = indexutils.mid_processing(i);
 		var dddd = template(new_obj);
+		
+		
 				
 	   	var ws1 = fs.createWriteStream('public/html/'+pid+'.html', { encoding: "utf8" })
 

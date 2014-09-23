@@ -5,16 +5,20 @@ function mid_processing(origin_obj) {
 	// 设置问题类型:0无，1单选，2多选
 	function _set_question_type(question){
 		var question_type = '0'
+		var question_type_desc = '无'
 		
 		if(right_answer_count == 0){
 			console.log('没有任何正确答案的题目，做个毛线呀');
 		}else if(right_answer_count == 1){
 			question_type = '1'
+			question_type_desc = '单选'
 		}else{
 			question_type = '2'
+			question_type_desc = '多选'
 		}
 		
 		question.type = question_type;	
+		question.type_desc = question_type_desc;
 	}
 	
 	// 设置问题答案个数

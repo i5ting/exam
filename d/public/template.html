@@ -61,19 +61,16 @@
 				  	<dl>
 				  		<dd>
 							<p>
-								{{label}}/有{{answers_count}}个答案，正确答案有{{right_answer_count}}个
-								/正确答案是({{right_answer_array}})
+								
+								{{fullName this}}
+							
 							</p>
 						</dd>				
 				  	</dl>
 				  	<ul class='list-group js_group'>
-							 {{#each answers}}
-								 <li class='list-group-item' data-score='10' onclick='return toggle(this);'>
-								 <i class='glyphicon glyphicon-unchecked'></i>{{label}}
-								 </li>
-								 
-							  {{/each}}
-							 																				
+						
+						{{answersTag this}}
+					 																	
 				  	</ul>
 				  	<div class='buttons buttons2'>
 				  		<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'> 
