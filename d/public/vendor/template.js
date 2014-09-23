@@ -174,7 +174,12 @@ function next_btn(t) {
 	//音乐播放end
    
 	// alert(t);
-    setTimeout(function(){next(t);},300);
+    if(t == total){
+        result(tScore);
+    }
+    else{
+        setTimeout(function(){next(t);},300);
+    }
 }
 
 Zepto(function($){
