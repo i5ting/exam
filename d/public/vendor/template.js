@@ -39,6 +39,14 @@ function next(t){
 	
 	show_current_status(t);
 	count_right(t);
+	
+	$('.question_next_btn').last().html("提交");
+	
+	//如果是最后一题，下一个，变为“提交”
+	if(true){
+		$('.question_next_btn').last().html("提交");
+	}
+	
     //console.log(t);
     $(".panel-body").hide();
     var $_this = $(".js_answer").eq(t);

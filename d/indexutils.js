@@ -182,8 +182,10 @@ function template_compile(source,debug){
 		
 		if (type === 2){
 			html += "<div class='buttons buttons2'  onclick='return next_btn(this);'>"
-			  	+ "<a class='btn btn-info btn-block'>下一个</a>"
+			  	+ "<a class='btn btn-info btn-block question_next_btn'>下一个</a>"
 				+ "</div>";
+				
+			
 		}
 		
 		html += "<div class='buttons buttons2'>"
