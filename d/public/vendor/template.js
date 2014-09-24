@@ -1,3 +1,9 @@
+var user_answer_arr = []
+var debug = true
+var user_answer_dic = {
+	
+}
+
 function play(url){
 	var audio = document.createElement('audio');
 	var source = document.createElement('source');
@@ -136,15 +142,7 @@ function show_result(t){
 	
 }
 
-function count_right(t){
-	var answers = $('.js_answer');
-	$.each(answers ,function(i){
-		var anser = answers[i]
-		alert($(anser).data('right_count'));
-		
-	});
-	 
-}
+ 
 // 单选
 function toggle(t){
 	console.log("当前得分"+score);
@@ -167,37 +165,16 @@ function toggle(t){
 
 // 下一个
 function next_btn(t) {
-	var user_answers_index_array = [];
-	var is_all_right = false;
-	
-	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
-	var all_answers = $(t).parent().find('ul li');
-	
-	if(user_answers.length == 0){
-		alert('没选择任何答案');
-		return;
-	}
-	
-	$.each(user_answers, function(i){
-		var o = $(user_answers[i]).parent();
-		console.log('o=' + o);
-		var index = $(all_answers).index(o) + 1;
-		console.log('index=' + index);
-		user_answers_index_array.push(index);
-	});
-	console.log(user_answers_index_array);
-	$(t).closest('#panel2').data('user_answers_index_array', user_answers_index_array);
-	
-	
+
 	//console.log(p)
-	console.log(user_answers);
+	// console.log(user_answers);
 	
+	dump_user_answer_arr(t);
+	 
 	var current = $(".js_answer").index($(t).parents(".js_answer")) 
-	$('#result').data( "right_count", user_answers_index_array);
-	
-	console.log( $('#result').data("right_count") );
-	
     var t = current + 1;
+	
+	
 	//音乐播放beg
 	$('.btn').show();
     $('.stop').hide();
@@ -213,11 +190,83 @@ function next_btn(t) {
     }
 }
 
-Zepto(function($){
-    $('.loads').hide();
- 
+function dump_user_answer_arr(t){
+	var user_answers_index_array = [];
+	var right_answers_index_array = [];
+	var is_all_right = false;
 	
+	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
+	var all_answers = $(t).parent().find('ul li');
+	
+	if(user_answers.length == 0){
+		alert('没选择任何答案');
+		return;
+	}
+	
+	$.each(user_answers, function(i){
+		var o = $(user_answers[i]).parent();
+		console.log('o=' + o);
+		var index = $(all_answers).index(o) + 1;
+		console.log('index=' + index);
+		
+		if($(o).find('span').length > 0){
+			right_answers_index_array.push(i + 1);
+		}
+		
+		user_answers_index_array.push(index);
+	});
+	console.log(user_answers_index_array);
+	$(t).closest('#panel2').data('user_answers_index_array', user_answers_index_array);
+	
+	var current = $(".js_answer").index($(t).parents(".js_answer")) 
+	
+	var a_count = $(t).parent().find('span').length
+	var b_count = $(t).parent().find('span.right').length
+	var c_count = $(t).parent().find('i.glyphicon-ok').length
+	var is_right = false;
+
+	if(a_count == b_count && b_count == c_count){
+		is_right = true;
+	}
+	
+	var answer_obj = {
+		'right_answers'	: right_answers_index_array,
+		'user_answers' 	: user_answers_index_array,
+		'is_right' 		: is_right
+	}
+
+	user_answer_arr.push(answer_obj);
+	
+	console.log('user_answer_arr',user_answer_arr);
+}
+
+/**
+ * 获取用户答对题目数字
+ */
+function count_right(){
+	var user_right_count = 0;
+	var user_answers_count = user_answer_arr.length;
+	$.each(user_answer_arr ,function(i){
+		var answer = user_answer_arr[i]
+		
+		if(answer.is_right == true){
+			user_right_count ++;
+		}
+	})
+	
+	if(debug == true){
+		var info = ' 一共做了'+user_answers_count + "道题"+"，答对了"+user_right_count +"道";
+		$('#current_answer_info').html(info);
+	}
+	console.log("user_right_count = "+user_right_count +'; and all count='+user_answers_count);
+	
+	return user_right_count;
+}
+
+Zepto(function($){
+    $('.loads').hide();	
 })
+
 WeixinApi.ready(function(Api) {
     Api.showOptionMenu();
     var wxData = {

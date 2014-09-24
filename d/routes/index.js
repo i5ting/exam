@@ -5,7 +5,7 @@ var uuid = require('node-uuid');
 var BufferHelper = require('bufferhelper');
 
 var indexutils = require('../indexutils');
-
+var debug = false;
 /* GET home page. */
 router.get('/', function(req, res) {
 	

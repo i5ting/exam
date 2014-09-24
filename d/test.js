@@ -5,6 +5,8 @@ var Handlebars = require('handlebars');
 
 var BufferHelper = require('bufferhelper');
 
+var debug = true;
+
 /* GET home page. */
 
 var o = "{\"is_ad\":\"false\",\"name\":\"ekzhi 考试\",\"count\":0,\"desc\":\"kezhi\",\"weixinName\":\"kezhi\",\"weixinId\":\"sfsdsf\",\"questions\":[{\"label\":\"kezhi \",\"answers\":[{\"label\":\"sdf\",\"is_answer\":true},{\"label\":\"sdf\",\"is_answer\":true},{\"label\":\"sdf\",\"is_answer\":false}]},{\"label\":\"智楠sddssd柜\",\"answers\":[{\"label\":\"dssdds\",\"is_answer\":true},{\"label\":\"sddssd\",\"is_answer\":false},{\"label\":\"aaaa\",\"is_answer\":true},{\"label\":\"q\",\"is_answer\":false}]}]} "
@@ -49,8 +51,13 @@ rs.on("end", function () {
 			 
 			 if (type === 1){
 				 if(answer.is_answer == true){
+					 var extra = ''
+					 if(debug == true){
+						 extra = "<span>答案</span>";
+					 }
+					 
 					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'><span>答案</span></i>"
+						+  "<i class='glyphicon glyphicon-unchecked'>"+extra+"</i>"
 						+  answer.label
 						+ "</li>";
 				 }else{
@@ -64,8 +71,13 @@ rs.on("end", function () {
 			 
 			 if (type === 2){
 				 if(answer.is_answer == true){
+					 var extra = ''
+					 if(debug == true){
+						 extra = "<span>答案</span>";
+					 }
+					 
 					 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'><span>答案</span></i>"
+						+  "<i class='glyphicon glyphicon-unchecked'>"+extra+"</i>"
 						+  answer.label
 						+ "</li>";
 				 }else{
