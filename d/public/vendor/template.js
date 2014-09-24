@@ -137,7 +137,6 @@ function show_result(t){
 }
 
 function count_right(t){
-	return;
 	var answers = $('.js_answer');
 	$.each(answers ,function(i){
 		var anser = answers[i]
@@ -174,6 +173,11 @@ function next_btn(t) {
 	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
 	var all_answers = $(t).parent().find('ul li');
 	
+	if(user_answers.length == 0){
+		alert('没选择任何答案');
+		return;
+	}
+	
 	$.each(user_answers, function(i){
 		var o = $(user_answers[i]).parent();
 		console.log('o=' + o);
@@ -189,9 +193,9 @@ function next_btn(t) {
 	console.log(user_answers);
 	
 	var current = $(".js_answer").index($(t).parents(".js_answer")) 
-	$('#result').data(current + "", user_answers_index_array);
+	$('#result').data( "right_count", user_answers_index_array);
 	
-	console.log( $('#result').data(current+ "") );
+	console.log( $('#result').data("right_count") );
 	
     var t = current + 1;
 	//音乐播放beg
