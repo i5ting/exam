@@ -10,7 +10,7 @@ var debug = false;
 
 /* GET home page. */
 
-var o = "{\"is_ad\":\"false\",\"name\":\"ekzhi 考试\",\"count\":0,\"desc\":\"kezhi\",\"weixinName\":\"kezhi\",\"weixinId\":\"sfsdsf\",\"questions\":[{\"label\":\"kezhi \",\"answers\":[{\"label\":\"sdf\",\"is_answer\":true},{\"label\":\"sdf\",\"is_answer\":true},{\"label\":\"sdf\",\"is_answer\":false}]},{\"label\":\"智楠sddssd柜\",\"answers\":[{\"label\":\"dssdds\",\"is_answer\":true},{\"label\":\"sddssd\",\"is_answer\":false},{\"label\":\"aaaa\",\"is_answer\":true},{\"label\":\"q\",\"is_answer\":false}]}]} "
+var o = "{\"is_ad\":\"false\",\"name\":\"啥玩意儿专业八级考试\",\"count\":0,\"desc\":\"国寿友情提示：不准携带通讯工具，不准交头接耳、 一经发现，取消考试成绩，并终生禁止再次参与本考试！一定要记得哦！\",\"weixinName\":\"智楠金柜\",\"weixinId\":\"188888888\",\"questions\":[{\"label\":\"单选4\",\"answers\":[{\"label\":\"萨顶顶\",\"is_answer\":false},{\"label\":\"水电费\",\"is_answer\":true},{\"label\":\"色温\",\"is_answer\":false},{\"label\":\"问问\",\"is_answer\":false}]},{\"label\":\"单选2\",\"answers\":[{\"label\":\"打算减肥了\",\"is_answer\":true},{\"label\":\"速度\",\"is_answer\":false}]},{\"label\":\"多选4\",\"answers\":[{\"label\":\"圣诞节快放假了\",\"is_answer\":true},{\"label\":\"的方式框架\",\"is_answer\":true},{\"label\":\"水电费发生的\",\"is_answer\":false},{\"label\":\"2323\",\"is_answer\":false}]},{\"label\":\"多选2\",\"answers\":[{\"label\":\"ewer\",\"is_answer\":true},{\"label\":\"是否\",\"is_answer\":true}]}]}"
 var i = JSON.parse(o);
 console.log( i );
 

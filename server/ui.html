@@ -147,12 +147,12 @@ $(function(){
 	
 	function create_answer(e){
 		console.log(e.target);
-		var h = "<hr>"
+		var h = ""
 			+ "<input type='text' name='all_weixin_name' value='' />"
 			+ "    是否为答案<select  name='all_select_name'>"
 			+ "	<option value='true' >true</option>"
 			+ "	<option value='false' selected>false</option>"
-			+ "</select>"
+			+ "</select><br>"
 		
 		$(e.target).parent().closest('div').last().append(h);
 	}
