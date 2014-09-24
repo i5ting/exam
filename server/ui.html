@@ -266,12 +266,12 @@ $(function(){
 		var json = JSON.stringify(exam);  
 		console.log(json);
 		
-		$.get('http://127.0.0.1:3000/?data='+json+'',function(data){
+		$.get('http://127.0.0.1:7000/?data='+json+'',function(data){
 			console.log('get data = '+data);
 		});
 		
 		setTimeout(function(){
-			window.href.location = 'http://127.0.0.1:3000/dataStream.html'
+			window.href.location = 'http://127.0.0.1:7000/dataStream.html'
 		},2000);
 	}
 	
