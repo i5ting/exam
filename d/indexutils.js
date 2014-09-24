@@ -90,13 +90,18 @@ function mid_processing(origin_obj) {
 	return _obj;
 }
 
-function template_compile(source,debug){
+function template_compile(source,config){
 	var template = Handlebars.compile(source);
 
 	Handlebars.registerHelper('fullName', function(obj) {
-		if(debug == false){
-			return "【"+ obj.type_desc+"题目】"+ obj.label
+		if(config.debug == false){
+			if(config.show_question_title_tip == true){
+				return "【"+ obj.type_desc+"题目】"+ obj.label
+			}
+			
+			return " "+ obj.label
 		}
+		
 	  	return "【"+ obj.type_desc+"题目】"+ obj.label + " 总共有" + obj.answers_count+ "个答案，正确答案有"+obj.right_answer_count+"个/正确答案是("+obj.right_answer_array+")";
 	});
 	
@@ -115,7 +120,7 @@ function template_compile(source,debug){
 			 if (type === 1){
 				 if(answer.is_answer == true){
 					 var extra = '<span></span>'
-					 if(debug == true){
+					 if(config.debug == true){
 						 extra = "<span>答案</span>";
 					 }
 					 
@@ -135,7 +140,7 @@ function template_compile(source,debug){
 			 if (type === 2){
 				 if(answer.is_answer == true){
 					 var extra = '<span></span>'
-					 if(debug == true){
+					 if(config.debug == true){
 						 extra = "<span>答案</span>";
 					 }
 					 
@@ -183,20 +188,50 @@ function template_compile(source,debug){
 		if (type === 2){
 			html += "<div class='buttons buttons2'  onclick='return next_btn(this);'>"
 			  	+ "<a class='btn btn-info btn-block question_next_btn'>下一个</a>"
-				+ "</div>";
-				
-			
+				+ "</div>";	
 		}
 		
-		html += "<div class='buttons buttons2'>"
-			+ "	<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>"
-		  	+ "一键关注"
-			+ "</a>"
-			+ "</div>";
+		if(config.show_subscribe_btn == true){
+			html += "<div class='buttons buttons2'>"
+				+ "	<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>"
+			  	+ "一键关注"
+				+ "</a>"
+				+ "</div>";
+		}
+		
 		
 		return  new Handlebars.SafeString(html);
 	});
 	
+	/**
+    <div class="buttons">
+        <a href="#result" class="btn btn-danger btn-danger1 btn-block" onclick="return next(0);"> 开始测试</a>
+    </div>
+	<div class="buttons buttons2">
+        <a href="http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd" class="btn btn-danger btn-danger2 btn-block"> 
+			一键关注
+		</a>
+    </div>  
+	*/
+	Handlebars.registerHelper('startTag', function() {
+		var html = 	" <div class=\"buttons\">"
+	       			+"	<a href=\"#result\" class=\"btn btn-danger btn-danger1 btn-block\" onclick=\"return next(0);\"> 开始测试</a>"
+	    			+"</div>";
+	 
+		
+		if(config.show_subscribe_btn == true){
+			html += "<div class='buttons buttons2'>"
+					+ "	<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>"
+			  		+ "一键关注"
+					+ "</a>"
+				+ "</div>";
+		}
+		
+		
+		return  new Handlebars.SafeString(html);
+	});
+	
+  
 
 	var template = Handlebars.compile(source);
 	

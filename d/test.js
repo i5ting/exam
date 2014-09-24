@@ -31,7 +31,11 @@ rs.on("data", function (trunk){
 rs.on("end", function () {
 	var source = bufferHelper.toBuffer().toString();
 	
-	var template = indexutils.template_compile(source,debug);
+	var template = indexutils.template_compile(source,{
+		debug: false,
+		show_subscribe_btn:false,
+		show_question_title_tip:false
+	});
 
 	// new 
 	var new_obj = indexutils.mid_processing(i);
