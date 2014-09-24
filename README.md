@@ -107,6 +107,18 @@ https://www.npmjs.org/package/handlebars
 
 	一共做了1道题，答对了1道
 	
+### 配置项说明
+	
+	var template = indexutils.template_compile(source,{
+		debug: false,
+		show_subscribe_btn:false,
+		show_question_title_tip:false
+	});
+
+- debug 调试信息
+- show_subscribe_btn 是否显示一键关注按钮
+- show_question_title_tip 是否显示题干的提示（单选还是多选）
+
 	
 ## todo
 
