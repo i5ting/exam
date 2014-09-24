@@ -35,7 +35,10 @@ rs.on("end", function () {
 	var template = Handlebars.compile(source);
 
 	Handlebars.registerHelper('fullName', function(obj) {
-	  return "【"+ obj.type_desc+"题目】"+ obj.label + " 总共有" + obj.answers_count+ "个答案，正确答案有"+obj.right_answer_count+"个/正确答案是("+obj.right_answer_array+")";
+		if(debug == false){
+			return "【"+ obj.type_desc+"题目】"+ obj.label
+		}
+	  	return "【"+ obj.type_desc+"题目】"+ obj.label + " 总共有" + obj.answers_count+ "个答案，正确答案有"+obj.right_answer_count+"个/正确答案是("+obj.right_answer_array+")";
 	});
 	
 	

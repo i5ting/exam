@@ -87,3 +87,22 @@ https://www.npmjs.org/package/handlebars
 	var result = template(data);
 
 
+
+
+## 说明
+
+### 存放当前状态
+
+	<span id='current_status'>
+
+比如
+	
+	一共2道题，当前是第2道
+	
+### 存放当前结果状态
+
+	<span id='current_answer_info'></span>
+
+比如
+
+	一共做了1道题，答对了1道

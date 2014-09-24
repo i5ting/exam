@@ -192,7 +192,7 @@ function next_btn(t) {
 	
 	
 	// alert(t);
-    if(t == total){
+    if(t1 == total){
         result(tScore);
     }else{
         setTimeout(function(){next(t1);},300);
@@ -263,8 +263,10 @@ function count_right(){
 		}
 	})
 	
+	var all_questions_count = $('.js_answer').length;
+	
 	if(debug == true){
-		var info = ' 一共做了'+user_answers_count + "道题"+"，答对了"+user_right_count +"道";
+		var info = ' 一共'+ all_questions_count +'道题:做了'+user_answers_count + "道"+"，答对了"+user_right_count +"道";
 		$('#current_answer_info').html(info);
 	}
 	console.log("user_right_count = "+user_right_count +'; and all count='+user_answers_count);
@@ -274,6 +276,10 @@ function count_right(){
 
 function show_current_status(t){
 	var count = $('.js_answer').length;
+	
+	if(t == count){
+		return
+	}
 	var current = t + 1;
 	
 	if(is_show_current_status == true){
