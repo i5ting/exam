@@ -5,7 +5,8 @@ var Handlebars = require('handlebars');
 
 var BufferHelper = require('bufferhelper');
 
-var debug = true;
+var debug = false;
+// var debug = true;
 
 /* GET home page. */
 
@@ -51,7 +52,7 @@ rs.on("end", function () {
 			 
 			 if (type === 1){
 				 if(answer.is_answer == true){
-					 var extra = ''
+					 var extra = '<span></span>'
 					 if(debug == true){
 						 extra = "<span>答案</span>";
 					 }
@@ -71,7 +72,7 @@ rs.on("end", function () {
 			 
 			 if (type === 2){
 				 if(answer.is_answer == true){
-					 var extra = ''
+					 var extra = '<span></span>'
 					 if(debug == true){
 						 extra = "<span>答案</span>";
 					 }

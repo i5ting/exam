@@ -1,5 +1,8 @@
 var user_answer_arr = []
 var debug = true
+var is_show_right_info = true;
+var is_show_current_status = true;
+
 var user_answer_dic = {
 	
 }
@@ -33,6 +36,8 @@ var scoreArr = new Array();
 	scoreArr[9] = 90;
 	
 function next(t){
+	
+	show_current_status(t);
     //console.log(t);
     $(".panel-body").hide();
     var $_this = $(".js_answer").eq(t);
@@ -126,20 +131,16 @@ function show_result(t){
 	
 	if(a_count == b_count && b_count == c_count){
 		// alert(' 完全答对了 ');
-		$(t).parent().css('border','5px dashed green');
-		
-		if($(t).closest('.js_answer').data('right_count') == undefined){
-			$(t).closest('.js_answer').data('right_count',1)
+		if(is_show_right_info == true){
+			$(t).parent().css('border','5px dashed green');
 		}
-		
-		//alert($(t).parent().data('right_count'));
+	
 	}else{
 		// alert(' 答错了 ');
-		$(t).parent().css('border','5px dashed red');
-		
-		$(t).closest('.js_answer').data('right_count',0);
+		if(is_show_right_info == true){
+			$(t).parent().css('border','5px dashed red');
+		}
 	}
-	
 }
 
  
@@ -165,14 +166,20 @@ function toggle(t){
 
 // 下一个
 function next_btn(t) {
-
 	//console.log(p)
 	// console.log(user_answers);
+	
+	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
+
+	if(user_answers.length == 0){
+		alert('没选择任何答案');
+		return;
+	}
 	
 	dump_user_answer_arr(t);
 	 
 	var current = $(".js_answer").index($(t).parents(".js_answer")) 
-    var t = current + 1;
+    var t1 = current + 1;
 	
 	
 	//音乐播放beg
@@ -182,11 +189,13 @@ function next_btn(t) {
     
 	count_right(t);
 	
+	
+	
 	// alert(t);
     if(t == total){
         result(tScore);
     }else{
-        setTimeout(function(){next(t);},300);
+        setTimeout(function(){next(t1);},300);
     }
 }
 
@@ -261,6 +270,16 @@ function count_right(){
 	console.log("user_right_count = "+user_right_count +'; and all count='+user_answers_count);
 	
 	return user_right_count;
+}
+
+function show_current_status(t){
+	var count = $('.js_answer').length;
+	var current = t + 1;
+	
+	if(is_show_current_status == true){
+		var info = ' 一共'+ count + "道题"+"，当前是第"+ current +"道";
+		$('#current_status').html(info);
+	}
 }
 
 Zepto(function($){
