@@ -1,8 +1,6 @@
 var express = require('express');
 var indexutils = require('./indexutils');
 
-var Handlebars = require('handlebars');
-
 var BufferHelper = require('bufferhelper');
 
 var debug = false;
