@@ -34,7 +34,8 @@ rs.on("end", function () {
 	var template = indexutils.template_compile(source,{
 		debug: false,
 		show_subscribe_btn:false,
-		show_question_title_tip:false
+		show_question_title_tip:false,
+		shartToYourFriendsTitle:"炫耀一下"
 	});
 
 	// new 
