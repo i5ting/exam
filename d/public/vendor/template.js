@@ -38,6 +38,7 @@ var scoreArr = new Array();
 function next(t){
 	
 	show_current_status(t);
+	count_right(t);
     //console.log(t);
     $(".panel-body").hide();
     var $_this = $(".js_answer").eq(t);
@@ -62,6 +63,7 @@ function next(t){
 }
 
 function result(t){
+	count_right(t);
     console.log("得分"+tScore);
     $(".panel-body").hide();
     for (var i = scoreArr.length - 1; i >= 0; i--) {
@@ -102,21 +104,15 @@ function toggle_only(t){
 	
 	var iii = $(t).find('i').find('span').length > 0 ? true :false;
 	
-	
-	// alert(a_count);
-	
-	
 	if( $(t).find('i').hasClass('glyphicon-unchecked')){
 		// alert(iii);
 		$(t).find('i').find('span').addClass('right');
 		$(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
-		
-	
-		show_result(t);
 	}else{
 		$(t).find('i').removeClass('glyphicon-ok').addClass('glyphicon-unchecked');
-		show_result(t);
 	}
+	
+	show_result(t);
     
     var t = $(".js_answer").index($(t).parents(".js_answer")) + 1;
 	//音乐播放beg
@@ -146,16 +142,26 @@ function show_result(t){
  
 // 单选
 function toggle(t){
+	// dump_user_answer_arr(t);
+	
 	console.log("当前得分"+score);
     $(".list-group-item").removeClass('active')
     var score = $(t).attr("data-score");
     tScore  = parseInt(tScore) + parseInt(score);
     $(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
+
+	$(t).find('i').find('span').addClass('right');	
+	
+	dump_user_answer_arr_one(t)
+
     var t = $(".js_answer").index($(t).parents(".js_answer")) + 1;
 	//音乐播放beg
 	$('.btn').show();
     $('.stop').hide();
 	//音乐播放end
+	
+
+	
     if(t == total){
         result(tScore);
     }
@@ -164,7 +170,9 @@ function toggle(t){
     }
 }
 
-// 下一个
+/**
+ * 多选的时候，点击下一个按钮事件处理
+ */
 function next_btn(t) {
 	//console.log(p)
 	// console.log(user_answers);
@@ -176,21 +184,16 @@ function next_btn(t) {
 		return;
 	}
 	
-	dump_user_answer_arr(t);
+	dump_user_answer_arr_multy(t);
 	 
 	var current = $(".js_answer").index($(t).parents(".js_answer")) 
     var t1 = current + 1;
-	
 	
 	//音乐播放beg
 	$('.btn').show();
     $('.stop').hide();
 	//音乐播放end
     
-	count_right(t);
-	
-	
-	
 	// alert(t);
     if(t1 == total){
         result(tScore);
@@ -199,13 +202,35 @@ function next_btn(t) {
     }
 }
 
-function dump_user_answer_arr(t){
+
+function dump_user_answer_arr_one(t,type)
+{
+	dump_user_answer_arr(t,1);
+}
+
+
+function dump_user_answer_arr_multy(t,type)
+{
+	dump_user_answer_arr(t,2);	
+}
+/**
+type  = 0 无选
+type  = 1 单选
+type  = 2 多选
+**/ 
+function dump_user_answer_arr(t,type){
 	var user_answers_index_array = [];
 	var right_answers_index_array = [];
 	var is_all_right = false;
 	
 	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
 	var all_answers = $(t).parent().find('ul li');
+	
+	// 单选
+	if(type == 1){
+		user_answers = $(t).parent().find('.glyphicon-ok')
+		all_answers = $(t).parent().find('li');
+	}
 	
 	if(user_answers.length == 0){
 		alert('没选择任何答案');
@@ -224,7 +249,8 @@ function dump_user_answer_arr(t){
 		
 		user_answers_index_array.push(index);
 	});
-	console.log(user_answers_index_array);
+	
+	//console.log(user_answers_index_array);
 	$(t).closest('#panel2').data('user_answers_index_array', user_answers_index_array);
 	
 	var current = $(".js_answer").index($(t).parents(".js_answer")) 

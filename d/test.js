@@ -6,7 +6,7 @@ var Handlebars = require('handlebars');
 var BufferHelper = require('bufferhelper');
 
 var debug = false;
-// var debug = true;
+var debug = true;
 
 /* GET home page. */
 
