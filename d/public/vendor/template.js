@@ -121,11 +121,30 @@ function show_result(t){
 	if(a_count == b_count && b_count == c_count){
 		// alert(' 完全答对了 ');
 		$(t).parent().css('border','5px dashed green');
+		
+		if($(t).closest('.js_answer').data('right_count') == undefined){
+			$(t).closest('.js_answer').data('right_count',1)
+		}
+		
+		//alert($(t).parent().data('right_count'));
 	}else{
 		// alert(' 答错了 ');
 		$(t).parent().css('border','5px dashed red');
+		
+		$(t).closest('.js_answer').data('right_count',0);
 	}
 	
+}
+
+function count_right(t){
+	return;
+	var answers = $('.js_answer');
+	$.each(answers ,function(i){
+		var anser = answers[i]
+		alert($(anser).data('right_count'));
+		
+	});
+	 
 }
 // 单选
 function toggle(t){
@@ -179,7 +198,9 @@ function next_btn(t) {
 	$('.btn').show();
     $('.stop').hide();
 	//音乐播放end
-   
+    
+	count_right(t);
+	
 	// alert(t);
     if(t == total){
         result(tScore);

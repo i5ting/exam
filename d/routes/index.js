@@ -55,17 +55,33 @@ router.get('/', function(req, res) {
 				 var answer = obj.answers[i];
 			 
 				 if (type === 1){
-					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'></i>"
-						+  answer.label
-						+ "</li>";
+					 if(answer.is_answer == true){
+						 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+							+  "<i class='glyphicon glyphicon-unchecked'><span>答案</span></i>"
+							+  answer.label
+							+ "</li>";
+					 }else{
+						 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
+							+  "<i class='glyphicon glyphicon-unchecked'></i>"
+							+  answer.label
+							+ "</li>";
+					 }
+				 
 				 }
 			 
 				 if (type === 2){
-					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'></i>"
-						+  answer.label
-						+ "</li>";
+					 if(answer.is_answer == true){
+						 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
+							+  "<i class='glyphicon glyphicon-unchecked'><span>答案</span></i>"
+							+  answer.label
+							+ "</li>";
+					 }else{
+						 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
+							+  "<i class='glyphicon glyphicon-unchecked'></i>"
+							+  answer.label
+							+ "</li>";
+					 
+					 }
 				 }
 			 
 				 if (type === 0){
@@ -78,13 +94,45 @@ router.get('/', function(req, res) {
 		  	 return  new Handlebars.SafeString(html);
 		});
 	
+		Handlebars.registerHelper('qustionBottomTag', function(question) {
+			// <div class='buttons buttons2'>
+			// 	  		<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>
+			// 	  		一键关注
+			// 	  		</a>
+			// 	  	</div>
+			var type = parseInt(question.type);//问题类似
+		
+			var html = '';
+		
+			if (type === 0){
+			
+			}
+		
+			if (type === 1){
+			
+			}
+		
+			if (type === 2){
+				html += "<div class='buttons buttons2'  onclick='return next_btn(this);'>"
+				  	+ "<a class='btn btn-info btn-block'>下一个</a>"
+					+ "</div>";
+			}
+		
+			html += "<div class='buttons buttons2'>"
+				+ "	<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'>"
+			  	+ "一键关注"
+				+ "</a>"
+				+ "</div>";
+		
+			return  new Handlebars.SafeString(html);
+		});
+	
 
 		var template = Handlebars.compile(source);
 	
 		// new 
 		var new_obj = indexutils.mid_processing(i);
 		var dddd = template(new_obj);
-		
 		
 				
 	   	var ws1 = fs.createWriteStream('public/html/'+pid+'.html', { encoding: "utf8" })

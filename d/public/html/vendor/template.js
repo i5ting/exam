@@ -25,6 +25,7 @@ var scoreArr = new Array();
 	scoreArr[7] = 70;
 	scoreArr[8] = 80;
 	scoreArr[9] = 90;
+	
 function next(t){
     //console.log(t);
     $(".panel-body").hide();
@@ -81,6 +82,71 @@ function result(t){
     };
 }
 
+// 多选 
+function toggle_only(t){
+	console.log("当前得分"+score);
+    $(".list-group-item").removeClass('active')
+    var score = $(t).attr("data-score");
+    tScore  = parseInt(tScore) + parseInt(score);
+	
+	var iii = $(t).find('i').find('span').length > 0 ? true :false;
+	
+	
+	// alert(a_count);
+	
+	
+	if( $(t).find('i').hasClass('glyphicon-unchecked')){
+		// alert(iii);
+		$(t).find('i').find('span').addClass('right');
+		$(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
+		
+	
+		show_result(t);
+	}else{
+		$(t).find('i').removeClass('glyphicon-ok').addClass('glyphicon-unchecked');
+		show_result(t);
+	}
+    
+    var t = $(".js_answer").index($(t).parents(".js_answer")) + 1;
+	//音乐播放beg
+	$('.btn').show();
+    $('.stop').hide();
+}
+
+function show_result(t){
+	var a_count = $(t).parent().find('span').length 
+	var b_count = $(t).parent().find('span.right').length 
+	var c_count = $(t).parent().find('i.glyphicon-ok').length 
+	
+	if(a_count == b_count && b_count == c_count){
+		// alert(' 完全答对了 ');
+		$(t).parent().css('border','5px dashed green');
+		
+		if($(t).closest('.js_answer').data('right_count') == undefined){
+			$(t).closest('.js_answer').data('right_count',1)
+		}
+		
+		//alert($(t).parent().data('right_count'));
+	}else{
+		// alert(' 答错了 ');
+		$(t).parent().css('border','5px dashed red');
+		
+		$(t).closest('.js_answer').data('right_count',0);
+	}
+	
+}
+
+function count_right(t){
+	return;
+	var answers = $('.js_answer');
+	$.each(answers ,function(i){
+		var anser = answers[i]
+		alert($(anser).data('right_count'));
+		
+	});
+	 
+}
+// 单选
 function toggle(t){
 	console.log("当前得分"+score);
     $(".list-group-item").removeClass('active')
@@ -99,103 +165,53 @@ function toggle(t){
         setTimeout(function(){next(t);},300);
     }
 }
+
+// 下一个
+function next_btn(t) {
+	var user_answers_index_array = [];
+	var is_all_right = false;
+	
+	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
+	var all_answers = $(t).parent().find('ul li');
+	
+	$.each(user_answers, function(i){
+		var o = $(user_answers[i]).parent();
+		console.log('o=' + o);
+		var index = $(all_answers).index(o) + 1;
+		console.log('index=' + index);
+		user_answers_index_array.push(index);
+	});
+	console.log(user_answers_index_array);
+	$(t).closest('#panel2').data('user_answers_index_array', user_answers_index_array);
+	
+	
+	//console.log(p)
+	console.log(user_answers);
+	
+	var current = $(".js_answer").index($(t).parents(".js_answer")) 
+	$('#result').data(current + "", user_answers_index_array);
+	
+	console.log( $('#result').data(current+ "") );
+	
+    var t = current + 1;
+	//音乐播放beg
+	$('.btn').show();
+    $('.stop').hide();
+	//音乐播放end
+    
+	count_right(t);
+	
+	// alert(t);
+    if(t == total){
+        result(tScore);
+    }else{
+        setTimeout(function(){next(t);},300);
+    }
+}
+
 Zepto(function($){
     $('.loads').hide();
-	
-	$.get('server/api.json',function(data){
-		var questions = data.data.questions;
-		console.log(questions);
-		
-		
-		if(data.data.is_ad){
-			
-		}
-		
-		$('title').html(data.data.name)
-		
-		$('#all_desc_pan').html(data.data.desc);
-		
-		$('#all_name_pan').html(data.data.name);
-		$('#all_count_pan').html(data.data.count);
-		
-		
-		
-		$('#all_weixin_name_pan').html(data.data.weixinName);
-		$('#all_weixin_id_pan').html(data.data.weixinId);
-		
-		
-		total = questions.length
-		
-		$.each(questions,function(i){
-			console.log(questions[i]);
-			
-			var currentQuestion = questions[i];
-			
-			var answerHtml = "";
-			$.each(currentQuestion.answers,function(j){
-				var cAnswer = currentQuestion.answers[j];
-				
-				// {
-// 						"label":"注意没注意",
-// 						"is_answer":true
-// 					},
-//
-				var data_score = 0;
-				if(cAnswer.is_answer){
-					data_score = 10;
-				}
-				
-				function iToChar(z){
-					switch(z)
-					{
-						case 0:
-						  return "A";
-						  break;
-						case 1:
-						  return "B";
-						  break;
-						case 2:
-						  return "C";
-						  break;
-						case 3:
-						  return "D";
-						  break;
-						case 4:
-						  return "E";
-						  break;
-						default:
-					 	
-					} 
-				}
-				
-				answerHtml += ""+"	<li class='list-group-item' data-score='"
-								+ data_score
-								+"' onclick='return toggle(this);'>"
-								+"		<i class='glyphicon glyphicon-unchecked'></i>"+iToChar(j)+" "+ cAnswer.label+" "
-								+"	</li>"; 
-								
-								
-			});
-		 
-			
-			var html = "<div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;'>"
-			    +"<dl>"
-				+"	<dd><p>看到那几个孩子在哪里藏老门二突然发现自己老了！藏老门是是弄啥了？</p></dd>				"
-			    +"</dl>"
-			    +"<ul class='list-group js_group'>"
-						+ answerHtml																					
-				+"</ul>"
-				+"<div class='buttons buttons2'>"
-				+"<a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'> "
-				+"一键关注"
-				+"</a>"
-				+"</div>    "
-				+"</div>";
-			
-			$("#timu_shengcheng_container").append(html);
-		});
-	});
-	
+ 
 	
 })
 WeixinApi.ready(function(Api) {
