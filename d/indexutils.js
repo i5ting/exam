@@ -241,10 +241,11 @@ function template_compile(source,config){
     </div>
 	**/
 	Handlebars.registerHelper('shareAndSubscribeTag', function() {
-		var html =     " <div class='buttons'>"
-					       +" <a href='javascript:void(0)' class='btn btn-success btn-block' onclick=\"$('#mcover').show()\">"+ config.shartToYourFriendsTitle +"</a>"
-					    +"</div>";
-						
+		var html =     
+			"<a class='btn btn-block' style='text-align: center;' onclick=\"$('#mcover').show()\">"
+			+"   		<image src='vendor/img/炫耀一下(选择).png'>"
+			+" </a>";
+			 
 		if(config.is_show_result_with_share == true){
 			html += "<div class='buttons buttons2'>"
 		     	 +"  <a href='http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd' class='btn btn-danger btn-danger2 btn-block'> 一键关注</a>"
