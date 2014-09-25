@@ -2,6 +2,9 @@ var user_answer_arr = []
 var debug = true
 var is_show_right_info = false;
 var is_show_current_status = true;
+var user = {
+	
+}
 
 var user_answer_dic = {
 	

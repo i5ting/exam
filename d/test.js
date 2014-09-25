@@ -35,7 +35,8 @@ rs.on("end", function () {
 		debug: false,
 		show_subscribe_btn:false,
 		show_question_title_tip:false,
-		shartToYourFriendsTitle:"炫耀一下"
+		shartToYourFriendsTitle:"炫耀一下",
+		is_show_result_with_share:false
 	});
 
 	// new 
