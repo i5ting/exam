@@ -1,7 +1,13 @@
 var user_answer_arr = []
-var debug = true
+// var debug = true
+var debug = false
+var is_show_right_info = true;
+
 var is_show_right_info = false;
+
 var is_show_current_status = true;
+var is_show_current_status = false;
+
 var user = {
 	
 }
