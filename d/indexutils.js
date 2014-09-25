@@ -186,9 +186,10 @@ function template_compile(source,config){
 		}
 		
 		if (type === 2){
-			html += "<div class='buttons buttons2'  onclick='return next_btn(this);'>"
-			  	+ "<a class='btn btn-info btn-block question_next_btn'>下一个</a>"
-				+ "</div>";	
+			html += 
+			"<a class='btn btn-block' style='text-align: center;'  onclick='return next_btn(this);'>"
+			+"   		<image src='vendor/img/提交答案(选择).png'>"
+			+" </a>";
 		}
 		
 		if(config.show_subscribe_btn == true){
