@@ -108,7 +108,7 @@ function template_compile(source,config){
 	
 	Handlebars.registerHelper('answersTag', function(obj) {
 		 // <li class='list-group-item' data-score='10' onclick='return toggle(this);'>
-		 // 	<i class='glyphicon glyphicon-unchecked'></i>
+		 // 	<i class='glyphiconsang glyphiconsang-unchecked'></i>
 		 // 	{{label}}
 		 // </li>
 	 	 var type = parseInt(obj.type);//问题类似
@@ -125,12 +125,12 @@ function template_compile(source,config){
 					 }
 					 
 					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'>"+extra+"</i>"
+						+  "<i class='glyphiconsang glyphiconsang-unchecked'>"+extra+"</i>&nbsp;&nbsp;"
 						+  answer.label
 						+ "</li>";
 				 }else{
 					 html += "<li class='list-group-item' data-score='10' onclick='return toggle(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'></i>"
+						+  "<i class='glyphiconsang glyphiconsang-unchecked'></i>&nbsp;&nbsp;"
 						+  answer.label
 						+ "</li>";
 				 }
@@ -145,12 +145,12 @@ function template_compile(source,config){
 					 }
 					 
 					 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'>"+extra+"</i>"
+						+  "<i class='glyphiconsang glyphiconsang-unchecked'>"+extra+"</i>&nbsp;&nbsp;"
 						+  answer.label
 						+ "</li>";
 				 }else{
 					 html += "<li class='list-group-item' data-score='10' onclick='return toggle_only(this);'>"
-						+  "<i class='glyphicon glyphicon-unchecked'></i>"
+						+  "<i class='glyphiconsang glyphiconsang-unchecked'></i>&nbsp;"
 						+  answer.label
 						+ "</li>";
 					 

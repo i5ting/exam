@@ -61,5 +61,19 @@
 	padding: 15px;
 }
 
+i{
+	width: 31px;
+	height: 50px;
+	display: block;
+	margin-left: -18px;
+	margin-top: -16px;
+	float:left;
+}
+.glyphiconsang-unchecked {
+		background:url(./img/unselect.png);	
+}
 
+.glyphiconsang-ok {
+		background:url(./img/selected.png);
+}
  

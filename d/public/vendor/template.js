@@ -70,17 +70,17 @@ function next(t){
         // audio.src = $_this.find('audio').attr('src');
         // audio.load();
         // audio.play();
-        $('#sicon').html('<span class="glyphicon glyphicon-headphones"></span>');
+        $('#sicon').html('<span class="glyphiconsang glyphiconsang-headphones"></span>');
     }
     else if(type==1){
         // stop = true;
         // audio.pause();
-        $('#sicon').html('<span class="glyphicon glyphicon-picture"></span>');
+        $('#sicon').html('<span class="glyphiconsang glyphiconsang-picture"></span>');
     }
     else{
         // stop = true;
         // audio.pause();
-        $('#sicon').html('<span class="glyphicon glyphicon-pencil"></span>');
+        $('#sicon').html('<span class="glyphiconsang glyphiconsang-pencil"></span>');
     }
 }
 
@@ -99,10 +99,10 @@ function result(t){
 			}
             
             if(i>(total/2)){
-                $('#sicon').html('<span class="glyphicon glyphicon-thumbs-up"></span>');
+                $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-up"></span>');
             }
             else{
-                $('#sicon').html('<span class="glyphicon glyphicon-thumbs-down"></span>');
+                $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-down"></span>');
             }
             $.get("/Fy/up/", {
 				wid: 42755,
@@ -126,12 +126,12 @@ function toggle_only(t){
 	
 	var iii = $(t).find('i').find('span').length > 0 ? true :false;
 	
-	if( $(t).find('i').hasClass('glyphicon-unchecked')){
+	if( $(t).find('i').hasClass('glyphiconsang-unchecked')){
 		// alert(iii);
 		$(t).find('i').find('span').addClass('right');
-		$(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
+		$(t).find('i').removeClass('glyphiconsang-unchecked').addClass('glyphiconsang-ok');
 	}else{
-		$(t).find('i').removeClass('glyphicon-ok').addClass('glyphicon-unchecked');
+		$(t).find('i').removeClass('glyphiconsang-ok').addClass('glyphiconsang-unchecked');
 	}
 	
 	show_result(t);
@@ -145,7 +145,7 @@ function toggle_only(t){
 function show_result(t){
 	var a_count = $(t).parent().find('span').length 
 	var b_count = $(t).parent().find('span.right').length 
-	var c_count = $(t).parent().find('i.glyphicon-ok').length 
+	var c_count = $(t).parent().find('i.glyphiconsang-ok').length 
 	
 	if(a_count == b_count && b_count == c_count){
 		// alert(' 完全答对了 ');
@@ -170,7 +170,7 @@ function toggle(t){
     $(".list-group-item").removeClass('active')
     var score = $(t).attr("data-score");
     tScore  = parseInt(tScore) + parseInt(score);
-    $(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
+    $(t).find('i').removeClass('glyphiconsang-unchecked').addClass('glyphiconsang-ok');
 
 	$(t).find('i').find('span').addClass('right');	
 	
@@ -199,7 +199,7 @@ function next_btn(t) {
 	//console.log(p)
 	// console.log(user_answers);
 	
-	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
+	var user_answers = $(t).parent().find('ul li i.glyphiconsang-ok')
 
 	if(user_answers.length == 0){
 		alert('没选择任何答案');
@@ -245,12 +245,12 @@ function dump_user_answer_arr(t,type){
 	var right_answers_index_array = [];
 	var is_all_right = false;
 	
-	var user_answers = $(t).parent().find('ul li i.glyphicon-ok')
+	var user_answers = $(t).parent().find('ul li i.glyphiconsang-ok')
 	var all_answers = $(t).parent().find('ul li');
 	
 	// 单选
 	if(type == 1){
-		user_answers = $(t).parent().find('.glyphicon-ok')
+		user_answers = $(t).parent().find('.glyphiconsang-ok')
 		all_answers = $(t).parent().find('li');
 	}
 	
@@ -279,7 +279,7 @@ function dump_user_answer_arr(t,type){
 	
 	var a_count = $(t).parent().find('span').length
 	var b_count = $(t).parent().find('span.right').length
-	var c_count = $(t).parent().find('i.glyphicon-ok').length
+	var c_count = $(t).parent().find('i.glyphiconsang-ok').length
 	var is_right = false;
 
 	if(a_count == b_count && b_count == c_count){
