@@ -52,32 +52,26 @@
 			 		 </div>
 			 <div id='timu_shengcheng_container'> 
 				  {{#each questions}}
-				  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
-						<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
-				  	<dl>
-				  		<dd>
-								
-								<p>
-									<font color='white'>
-									{{fullName this}}
-									</font>
-								</p>
-							</dd>				
-				  	</dl>
-				  	<ul class='list-group js_group'>
+					  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+							<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
+					  	<dl>
+					  		<dd>
+									<p>
+										<font color='white' size='6'>
+											{{fullName this}}
+										</font>
+									</p>
+								</dd>				
+					  	</dl>
 						
-						{{answersTag this}}
-					 																	
-				  	</ul>
+					  	<ul class='list-group js_group'>						
+								{{answersTag this}}
+					  	</ul>
 				  
-					
-					{{qustionBottomTag this}}
+							{{qustionBottomTag this}}
 					  
-				  </div>
-				  {{/each}}
-
-				 
-								
+					  </div>
+					{{/each}}			
 		 	 </div>
 			
 				<div id="panel3" class="panel-body js_result" data-id="0" style="display:none;">
