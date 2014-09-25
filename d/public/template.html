@@ -41,26 +41,28 @@
     	</div>
 			
 			
-	    <div id="bd" class="panel" style='margin-top:50px'>
+	    <div id="bd" class="panel" style='margin-top:0px;background:rgba(255, 255, 255, 0)!important;'>
 	        <div id="panel1" class="panel-body">
  	       
 				
-						<div class="buttons">
-			       		<a href="#result" class="btn btn-danger btn-danger1 btn-block" onclick="return next(0);" style='background-image:url(vendor/img/进行测试(选择).png)'> 开始测试</a>
-							</div>
+						<a class="btn btn-block" style='text-align: center;'  onclick="return next(0);">
+			       		<image src='vendor/img/进行测试(选择).png'>
+							</a>
 	               
-			 </div>
+			 		 </div>
 			 <div id='timu_shengcheng_container'> 
 				  {{#each questions}}
-				  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;'>
+				  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+						<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
 				  	<dl>
 				  		<dd>
-							<p>
 								
-								{{fullName this}}
-							
-							</p>
-						</dd>				
+								<p>
+									<font color='white'>
+									{{fullName this}}
+									</font>
+								</p>
+							</dd>				
 				  	</dl>
 				  	<ul class='list-group js_group'>
 						
