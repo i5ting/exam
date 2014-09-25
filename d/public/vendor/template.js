@@ -45,7 +45,9 @@ var scoreArr = new Array();
 	scoreArr[9] = 90;
 	
 function next(t){
-	
+	if(t==0){
+		$('.text-center').hide()
+	}
 	show_current_status(t);
 	count_right(t);
 	

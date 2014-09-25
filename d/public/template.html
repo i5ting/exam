@@ -26,29 +26,28 @@
 	</div>
 
 	<div class="container">
-		    <div class="text-center header">
-	        <h1 class="bold">
-				<span id='all_name_pan'>{{name}} / <span id='current_status'></span></span>
-			</h1>
-	        <p>已有<span id='all_count_pan'>0</span>人参考</p>
-			<p><span id='current_answer_info'></span></p>
-	        <div class="avatar1 text-center">
-	            <div class="img-circle" id="sicon">
-	                <span class="glyphicon glyphicon-pencil"></span>
-	            </div>
-	        </div>
-	    </div>
-	    <div id="bd" class="panel">
+	
+	    <div class="text-center header" style='text-align: left;'>
+    
+				<image src='vendor/img/name.png' /><br>
+				<image src='vendor/img/title.png' style='margin-left:2px;margin-top:8px'/>
+        
+				<p><span id='current_answer_info'></span></p>
+        <!-- <div class="avatar1 text-center">
+            <div class="img-circle" id="sicon">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </div>
+        </div> -->
+    	</div>
+			
+			
+	    <div id="bd" class="panel" style='margin-top:50px'>
 	        <div id="panel1" class="panel-body">
-	            <dl>
-	                <dd style="font-size:18px;">
-						<span id='all_desc_pan'>
-							{{desc}}
-						</span>		
-					</dd>
-	            </dl>
+ 	       
 				
-				{{startTag}}
+						<div class="buttons">
+			       		<a href="#result" class="btn btn-danger btn-danger1 btn-block" onclick="return next(0);" style='background-image:url(vendor/img/进行测试(选择).png)'> 开始测试</a>
+							</div>
 	               
 			 </div>
 			 <div id='timu_shengcheng_container'> 
