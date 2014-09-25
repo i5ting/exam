@@ -42,37 +42,34 @@
 			
 			
 	    <div id="bd" class="panel" style='margin-top:0px;background:rgba(255, 255, 255, 0)!important;'>
-	        <div id="panel1" class="panel-body">
- 	       
-				
+	       <div id="panel1" class="panel-body">
 						<a class="btn btn-block" style='text-align: center;'  onclick="return next(0);">
 			       		<image src='vendor/img/进行测试(选择).png'>
-							</a>
-	               
-			 		 </div>
-			 <div id='timu_shengcheng_container'> 
-				  {{#each questions}}
-					  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
-							<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
-					  	<dl>
-					  		<dd>
-									<p>
-										<font color='white' size='6'>
-											{{fullName this}}
-										</font>
-									</p>
-								</dd>				
-					  	</dl>
+						</a>   
+			 	 </div>
+				 <div id='timu_shengcheng_container'> 
+					  {{#each questions}}
+						  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+								<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
+						  	<dl>
+						  		<dd>
+										<p>
+											<font color='white' size='6'>
+												{{fullName this}}
+											</font>
+										</p>
+									</dd>				
+						  	</dl>
 						
-					  	<ul class='list-group js_group'>						
-								{{answersTag this}}
-					  	</ul>
+						  	<ul class='list-group js_group'>						
+									{{answersTag this}}
+						  	</ul>
 				  
-							{{qustionBottomTag this}}
+								{{qustionBottomTag this}}
 					  
-					  </div>
-					{{/each}}			
-		 	 </div>
+						  </div>
+						{{/each}}			
+			 	 </div>
 			
 				<div id="panel3" class="panel-body js_result" data-id="0" style="display:none;">
 	            <h1 class="bold text-danger">考试成绩：0分</h1>
