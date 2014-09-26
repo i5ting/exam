@@ -54,6 +54,10 @@
 	color:white;
 }
 
+.js_answer{
+	float:left;
+}
+
 .list-group-item{
 	color:white;
 	background-color:rgba(0, 0, 0, 0.05);

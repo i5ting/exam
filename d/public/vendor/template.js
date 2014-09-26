@@ -21,7 +21,8 @@ var main_weixin_url = "http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=2009
 var GET_RESULT_URL = function(){
 	return 'http://2.dabuu.sinaapp.com/getresult.php';
 } 
- 
+
+
 
 function play(url){
 	var audio = document.createElement('audio');
@@ -54,6 +55,8 @@ var scoreArr = new Array();
 function next(t){
 	if(t==0){
 		$('.text-center').hide()
+	}else{
+		$('.js_answer').show();
 	}
 	show_current_status(t);
 	count_right(t);
@@ -89,6 +92,7 @@ function next(t){
         // audio.pause();
         $('#sicon').html('<span class="glyphiconsang glyphiconsang-pencil"></span>');
     }
+		$('.js_answer').show();
 }
 
 function result(t){
@@ -420,43 +424,6 @@ function getQueryStringByName(name){
 }
 
 
-var GET_Q_URL = 'http://2.dabuu.sinaapp.com/getquestions.php'
-
-Zepto(function($){
-    $('.loads').hide();	
-		
-		$('#subscript_a_id').attr('href',main_weixin_url);
-		
-		var aid = getQueryStringByName('aid');
-		var uid = getQueryStringByName('uid')
-		
-		user.aid = aid;
-		user.uid = uid;
-		
-		// alert(aid+'-'+uid);
-		
-		var qs = '?aid='+aid+'&uid='+uid+''
-		
-		$.getJSON(GET_Q_URL + qs,function(data){
-			if(data.status == true){
-				var obj = data.data;
-				
-				if(obj.user_id > 0){
-					user.uid = obj.user_id;
-					user.enable = true;
-					alert('user enable');
-				}else{
-					user.uid = '0';
-					user.enable = false;
-				}
-			}else{
-				// alert('服务器返回status=false');
-			}
-			console.log(data);
-			console.log(user);
-		})
-})
-
 WeixinApi.ready(function(Api) {
     Api.showOptionMenu();
     var wxData = {
@@ -520,3 +487,128 @@ if(($(this).width()+20)>$('#content2').innerWidth()){
 				   
 });
 
+function add_iscroll(obj,objCon,_this,opts){
+	$('.tab_content').width($(window).width());
+	$('.tab_item').width($('.tab_content').width() * objCon.length);
+
+	// $.each(objCon, function(index) {
+	// 	var conLeft = $(this).width() * index;
+	// 	$(this).css({left:conLeft});
+	//
+	// 	$(this).attr('id','tab_con0'+ index);
+	// 	console.log(index);
+	//
+	// 	$(objCon).height($('.tab_content_container').height());
+	//
+	// 	//竖向滚动
+	// 	var xScroll = 'xScroll0'+index;
+	// 	xScroll = new IScroll('#tab_con0'+index, {
+	// 		scrollbars: true,
+	// 		mouseWheel: true,
+	// 		interactiveScrollbars: true,
+	// 		shrinkScrollbars: 'scale',
+	// 		fadeScrollbars: true
+	// 	});
+	//
+	// });
+	//横向滚动
+	obj.myScroll = new IScroll('.tab_content_container', {
+		scrollX: true,
+		momentum: false,
+		snap: '.tab_content',
+		snapSpeed: 400,
+		keyBindings: true
+	});
+
+	var liWidth = $('.tab_header li').width();
+	//横向滚动完成后给导航添加样式
+	obj.myScroll.on('scrollEnd', function () {
+		$('.tab_header li a').removeClass('on');
+		$('.tab_header li').eq(obj.myScroll.currentPage.pageX).children('a').addClass('on');
+		$('.cur_on').css({'transform':'translate('+ obj.myScroll.currentPage.pageX*liWidth+'px)',transition: '100ms'});
+//			console.log(obj.myScroll.currentPage)
+	});
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+}
+
+function my(){
+	var all_count = $('.js_answer').length;
+	var all_width = 320*all_count;
+	
+	$('#wrapper').css({
+		'width':'100%',
+		'height':'100%'
+		
+	});
+	
+	$('#scroller').css({
+		'width':(100*all_count) +'%',
+		'height':'100%'
+	});
+	
+	$('.js_answer').css({
+		'width':$('#wrapper').width(),	
+		'height':'100%'
+	});
+	
+	//横向滚动
+	var myScroll = new IScroll('#wrapper', {
+		scrollX: true,
+		momentum: false,
+		snap: true,
+		// snap: '.tab_content',
+		snapSpeed: 400,
+		keyBindings: true
+	});
+	
+	myScroll.on('scrollEnd', function () {
+		// $('.tab_header li a').removeClass('on');
+		// $('.tab_header li').eq(myScroll.currentPage.pageX).children('a').addClass('on');
+		// $('.cur_on').css({'transform':'translate('+ obj.myScroll.currentPage.pageX*liWidth+'px)',transition: '100ms'});
+//			console.log(obj.myScroll.currentPage)
+	});
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+	
+	
+	
+}
+
+var GET_Q_URL = 'http://2.dabuu.sinaapp.com/getquestions.php'
+
+Zepto(function($){
+    $('.loads').hide();	
+		
+		$('#subscript_a_id').attr('href',main_weixin_url);
+		
+		var aid = getQueryStringByName('aid');
+		var uid = getQueryStringByName('uid')
+		
+		user.aid = aid;
+		user.uid = uid;
+		
+		
+		my();
+		// alert(aid+'-'+uid);
+		
+		var qs = '?aid='+aid+'&uid='+uid+''
+		
+		$.getJSON(GET_Q_URL + qs,function(data){
+			if(data.status == true){
+				var obj = data.data;
+				
+				if(obj.user_id > 0){
+					user.uid = obj.user_id;
+					user.enable = true;
+					alert('user enable');
+				}else{
+					user.uid = '0';
+					user.enable = false;
+				}
+			}else{
+				// alert('服务器返回status=false');
+			}
+			console.log(data);
+			console.log(user);
+		})
+})

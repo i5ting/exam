@@ -26,7 +26,9 @@
 	</div>
 
 	<div class="container">
-	
+		
+
+
 	    <div class="text-center header" style='text-align: left;'>
     
 				<image src='vendor/img/name.png' /><br>
@@ -39,13 +41,13 @@
             </div>
         </div> -->
     	</div>
-			
+	
 			
 	    <div id="bd" class="panel" style='margin-top:0px;background:rgba(255, 255, 255, 0)!important;'>
 	       <div id="panel1" class="panel-body">
-						<a class="btn btn-block" style='text-align: center;'  onclick="return next(0);">
+					<a class="btn btn-block" style='text-align: center;'  onclick="return next(0);">
 			       		<image src='vendor/img/进行测试(选择).png'>
-						</a>   
+					</a>   
 						
 					
 					<a class="btn btn-block" style='text-align: center;'  onclick="return show_final_result(0);">
@@ -59,7 +61,9 @@
 			 	 </div>
 				 
 				 <div id='timu_shengcheng_container'> 
-						  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+					 <div id="wrapper">		
+					 	<div id="scroller">
+						  <div id='panel2' class='js_answer' data-type='1'		 style='display: none;padding-top:5px'>
 								<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
 						  	<dl>
 						  		<dd>
@@ -78,7 +82,7 @@
 								
 					  
 						  </div>
-						  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+						  <div id='panel2' class='js_answer' data-type='1'		 style='display: none;padding-top:5px'>
 								<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
 						  	<dl>
 						  		<dd>
@@ -97,7 +101,7 @@
 								
 					  
 						  </div>
-						  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+						  <div id='panel2' class='js_answer' data-type='1'		 style='display: none;padding-top:5px'>
 								<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
 						  	<dl>
 						  		<dd>
@@ -116,7 +120,7 @@
 								<a class='btn btn-block' style='text-align: center;'  onclick='return next_btn(this);'>   		<image src='vendor/img/提交答案(选择).png'> </a>
 					  
 						  </div>
-						  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+						  <div id='panel2' class='js_answer' data-type='1'		 style='display: none;padding-top:5px'>
 								<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
 						  	<dl>
 						  		<dd>
@@ -136,6 +140,11 @@
 					  
 						  </div>
 			 	 </div>
+				 
+
+				 	</div><!--end wrapper -->	
+				 </div>
+				 
 			
 				<div id="panel3" class="panel-body js_result text-center" data-id="0" style="display:none;">
 				    <div class="text-center header" style='text-align: center;'>
@@ -206,7 +215,8 @@
 							
 	            <a class='btn btn-block' style='text-align: center;' onclick="$('#mcover').show()">   		<image src='vendor/img/炫耀一下(选择).png'> </a>        
 			</div>
-			 
+
+<!--end container -->
        
 	</div>
 	
@@ -248,3 +258,4 @@
 <script src="vendor/zepto.min.js"></script>
 <script src="vendor/WeixinApi.min.js"></script>
 <script src="vendor/template.js"></script>
+<script src="vendor/iscroll-min.js"></script>

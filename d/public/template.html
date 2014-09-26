@@ -27,130 +27,135 @@
 
 	<div class="container">
 	
-	    <div class="text-center header" style='text-align: left;'>
+		<div id="wrapper">
+				<div id="scroller">
+				    <div class="text-center header" style='text-align: left;'>
     
-				<image src='vendor/img/name.png' /><br>
-				<image src='vendor/img/title.png' style='margin-left:2px;margin-top:8px'/>
+							<image src='vendor/img/name.png' /><br>
+							<image src='vendor/img/title.png' style='margin-left:2px;margin-top:8px'/>
         
-				<p><span id='current_answer_info'></span></p>
-        <!-- <div class="avatar1 text-center">
-            <div class="img-circle" id="sicon">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </div>
-        </div> -->
-    	</div>
-			
-			
-	    <div id="bd" class="panel" style='margin-top:0px;background:rgba(255, 255, 255, 0)!important;'>
-	       <div id="panel1" class="panel-body">
-						<a class="btn btn-block" style='text-align: center;'  onclick="return next(0);">
-			       		<image src='vendor/img/进行测试(选择).png'>
-						</a>   
-						
-					
-					<a class="btn btn-block" style='text-align: center;'  onclick="return show_final_result(0);">
-		       		<image src='vendor/img/进行测试(选择).png'>
-					</a>	
-						<a class="btn btn-block" style='text-align: center;'  onclick="return show_final_result(1);">
-			       		<image src='vendor/img/进行测试(选择).png'>
-						</a>   
-						
-						
-			 	 </div>
-				 
-				 <div id='timu_shengcheng_container'> 
-					  {{#each questions}}
-						  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
-								<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
-						  	<dl>
-						  		<dd>
-										<p>
-											<font color='white' size='6'>
-												{{fullName this}}
-											</font>
-										</p>
-									</dd>				
-						  	</dl>
-						
-						  	<ul class='list-group js_group'>						
-									{{answersTag this}}
-						  	</ul>
-				  
-								{{qustionBottomTag this}}
-					  
-						  </div>
-						{{/each}}			
-			 	 </div>
-			
-				<div id="panel3" class="panel-body js_result text-center" data-id="0" style="display:none;">
-				    <div class="text-center header" style='text-align: center;'>
-  
-							<image src='vendor/img/奖杯.png' /><br>
-	 
 							<p><span id='current_answer_info'></span></p>
 			        <!-- <div class="avatar1 text-center">
 			            <div class="img-circle" id="sicon">
 			                <span class="glyphicon glyphicon-pencil"></span>
 			            </div>
 			        </div> -->
+			    	</div>
+			
+			
+				    <div id="bd" class="panel" style='margin-top:0px;background:rgba(255, 255, 255, 0)!important;'>
+				       <div id="panel1" class="panel-body">
+									<a class="btn btn-block" style='text-align: center;'  onclick="return next(0);">
+						       		<image src='vendor/img/进行测试(选择).png'>
+									</a>   
+						
+					
+								<a class="btn btn-block" style='text-align: center;'  onclick="return show_final_result(0);">
+					       		<image src='vendor/img/进行测试(选择).png'>
+								</a>	
+									<a class="btn btn-block" style='text-align: center;'  onclick="return show_final_result(1);">
+						       		<image src='vendor/img/进行测试(选择).png'>
+									</a>   
+						
+						
+						 	 </div>
+				 
+							 <div id='timu_shengcheng_container'> 
+								  {{#each questions}}
+									  <div id='panel2' class='panel-body js_answer' data-type='1'		 style='display: none;padding-top:5px'>
+											<image src='vendor/img/answer_top.png' style='margin-left: -12px;'>
+									  	<dl>
+									  		<dd>
+													<p>
+														<font color='white' size='6'>
+															{{fullName this}}
+														</font>
+													</p>
+												</dd>				
+									  	</dl>
+						
+									  	<ul class='list-group js_group'>						
+												{{answersTag this}}
+									  	</ul>
+				  
+											{{qustionBottomTag this}}
+					  
+									  </div>
+									{{/each}}			
+						 	 </div>
+			
+							<div id="panel3" class="panel-body js_result text-center" data-id="0" style="display:none;">
+							    <div class="text-center header" style='text-align: center;'>
+  
+										<image src='vendor/img/奖杯.png' /><br>
+	 
+										<p><span id='current_answer_info'></span></p>
+						        <!-- <div class="avatar1 text-center">
+						            <div class="img-circle" id="sicon">
+						                <span class="glyphicon glyphicon-pencil"></span>
+						            </div>
+						        </div> -->
 								
 				
-							  <div id='panel4' class='panel-body' data-type='1'		 style='display: block;padding-top:5px;height:150px'>
+										  <div id='panel4' class='panel-body' data-type='1'		 style='display: block;padding-top:5px;height:150px'>
 					 
 					
-							  	<ul class='list-group js_group'>						
+										  	<ul class='list-group js_group'>						
 					 
-										<image src='vendor/img/评分@2x.png' style='width:100%'/><br>
-							  	</ul>
+													<image src='vendor/img/评分@2x.png' style='width:100%'/><br>
+										  	</ul>
 					
-								</div>
+											</div>
 				
-								<image src='vendor/img/还需努力@2x.png' style='width:80%'/><br><br>
-								<image src='vendor/img/邀请@2x.png' style='width:80%'/><br>
-			    	</div>
+											<image src='vendor/img/还需努力@2x.png' style='width:80%'/><br><br>
+											<image src='vendor/img/邀请@2x.png' style='width:80%'/><br>
+						    	</div>
 						
-													{{shareAndSubscribeTag}}    
+																{{shareAndSubscribeTag}}    
 													
-							<image src='vendor/img/答案以及解析.png'  style='width:100%'>
-							<br>
-	            <dl>
-	                <dt>详细分析:</dt>
-	                <dd>
-	                    <p>看来你真是外地人，好吧！河南人民欢迎你！凭分享记录可至东方金柜KTV领取200元房费卡一张！</p>
-	                </dd>
-	            </dl>
+										<image src='vendor/img/答案以及解析.png'  style='width:100%'>
+										<br>
+				            <dl>
+				                <dt>详细分析:</dt>
+				                <dd>
+				                    <p>看来你真是外地人，好吧！河南人民欢迎你！凭分享记录可至东方金柜KTV领取200元房费卡一张！</p>
+				                </dd>
+				            </dl>
 							
-							<image src='vendor/img/答题活动规则.png' style='width:100%'>
+										<image src='vendor/img/答题活动规则.png' style='width:100%'>
 	            
-					  	<ul style='text-align: left;padding : 20px;'>						
-							  <li>1. dssdsdsds</li>
-								<li>2. dssdsdsds</li>
-								<li>3. dssdsdsds</li>
-								<li>4. dssdsdsds</li>
-					  	</ul>
+								  	<ul style='text-align: left;padding : 20px;'>						
+										  <li>1. dssdsdsds</li>
+											<li>2. dssdsdsds</li>
+											<li>3. dssdsdsds</li>
+											<li>4. dssdsdsds</li>
+								  	</ul>
 							
 							
    
-				</div>
+							</div>
 			
 			
-				<div id="panel3" class="panel-body js_result" data-id="1" style="display:none;">
-	            <h1 class="bold text-danger">您还未关注我们的微信账户</h1>
+							<div id="panel3" class="panel-body js_result" data-id="1" style="display:none;">
+				            <h1 class="bold text-danger">您还未关注我们的微信账户</h1>
 
 					
-							<image src='vendor/img/答题活动规则.png' style='width:100%'>
+										<image src='vendor/img/答题活动规则.png' style='width:100%'>
 	            
-					  	<ul style='text-align: left;padding : 20px;'>						
-							  <li>1. dssdsdsds</li>
-								<li>2. dssdsdsds</li>
-								<li>3. dssdsdsds</li>
-								<li>4. dssdsdsds</li>
-					  	</ul>
+								  	<ul style='text-align: left;padding : 20px;'>						
+										  <li>1. dssdsdsds</li>
+											<li>2. dssdsdsds</li>
+											<li>3. dssdsdsds</li>
+											<li>4. dssdsdsds</li>
+								  	</ul>
 							
-							<h1 class="bold text-danger">查看答案</h1>
+										<h1 class="bold text-danger">查看答案</h1>
 							
-	            {{shareAndSubscribeTag}}        
-			</div>
+				            {{shareAndSubscribeTag}}        
+						</div>
+				</div>
+	
+	   </div>
 			 
        
 	</div>
