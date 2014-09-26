@@ -128,9 +128,12 @@ https://www.npmjs.org/package/handlebars
 - [ ] 单选，自动到下一题的时间
 - [ ] 多选，计算对一半的情况
 - [ ] 每道题限时30秒
-
+- [ ] 每天5道题
+- [ ] 改成ajax
 获取用户信息的api，微信增加了一个字段subscribe,如果值为0的话，说明没有关注，如果值为1的话，则说明已经关注了
  
+- aid是代理账户
+- uid是微信账户
 
 
 答题， 未关注
@@ -199,7 +202,7 @@ http://2.dabuu.sinaapp.com/getresult.php?aid=18e6255ebbf2d72f64625c63f29c600d&ui
 
 ============================  提交用户答题的信息结果  ============================
 
-POST: user_id=1010&q_11=1{#$}2_1&&q_22=3_0
+POST: getresult.php? user_id=1010&q_11=1{#$}2_1&&q_22=3_0
 
 解释：
 user_id=1010 是从 getquestioninfo.json 获取 的user_id
@@ -292,10 +295,17 @@ today_rate  =  击败多少同行 ( 0 -100)
 
 
 - dati.html?aid=xx&&uid=xx
-- jieguo.html?aid=xx&&uid=xx
+- jieguo.html?aid=xx&&uid=xx(给未关注的要得,已关注的就直接)
 
 
 
 财付通需要提供：
 
 http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd
+
+
+
+
+查看答案
+开始答题
+

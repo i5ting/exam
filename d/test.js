@@ -32,9 +32,9 @@ rs.on("end", function () {
 	var source = bufferHelper.toBuffer().toString();
 	
 	var template = indexutils.template_compile(source,{
-		debug: false,
+		debug: true,
 		show_subscribe_btn:false,
-		show_question_title_tip:false,
+		show_question_title_tip:true,
 		shartToYourFriendsTitle:"炫耀一下",
 		is_show_result_with_share:false
 	});

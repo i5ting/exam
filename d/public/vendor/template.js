@@ -1,6 +1,6 @@
 var user_answer_arr = []
 // var debug = true
-var debug = false
+var debug = true
 var is_show_right_info = true;
 
 var is_show_right_info = false;
@@ -15,6 +15,13 @@ var user = {
 var user_answer_dic = {
 	
 }
+
+var main_weixin_url = "http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd"
+
+var GET_RESULT_URL = function(){
+	return 'http://2.dabuu.sinaapp.com/getresult.php';
+} 
+ 
 
 function play(url){
 	var audio = document.createElement('audio');
@@ -85,36 +92,107 @@ function next(t){
 }
 
 function result(t){
-	count_right(t);
-    console.log("得分"+tScore);
-    $(".panel-body").hide();
-    for (var i = scoreArr.length - 1; i >= 0; i--) {
-        if ( parseInt(t) >= parseInt(scoreArr[i]) ) {
-            console.log("应该弹"+i);
-			
-			if(i==0){
-				$(".js_result").eq(-0).show();
+		var all_count = $('.js_answer').length;
+		var right_count = count_right(t);
+		
+		var result = parseInt(right_count/all_count * 100)
+		// alert(result);
+		console.log(user_answer_arr);
+		
+		 
+		var q_obj = {};
+		$.each(user_answer_arr,function(i){
+			var answer = user_answer_arr[i]
+				console.log(answer);
+				
+				var q = "q_" + i;
+				
+				var r = 0;
+				if(answer.is_right == true){
+					r = 1;
+				}
+				
+				var user_answer= answer.user_answers.join('{#$}')
+				
+				//POST: getresult.php? user_id=1010&q_11=1{#$}2_1&&q_22=3_0
+			 var cString =  user_answer + '_' + r
+			 
+			 
+			 eval('q_obj.' + q + '=cString' )
+			 
+		});
+		
+		if(debug == true){
+				user.user_id =1010
+		}
+		
+		q_obj.user_id = user.user_id
+
+		var url = GET_RESULT_URL();
+		var params = q_obj
+		
+		$.post(url,params,function(data){
+			// user.aid = aid;			//
+			// user.uid = uid;
+			if(data.status == true){
+				var obj = data.data;
+				
+				if(obj.focus == 1){
+					user.uid = obj.user_id;
+					user.fenable = true;
+					alert('focus enable');
+				}else{
+					user.uid = '0';
+					user.fenable = false;
+					alert('focus disable');
+				}
+				
+		   
+				
 			}else{
-				$(".js_result").eq(i).show();
+				alert('服务器返回status=false');
+				if(result>=50){
+					show_final_result(0);
+				}else{
+					show_final_result(1);
+				}
+				
 			}
-            
-            if(i>(total/2)){
-                $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-up"></span>');
-            }
-            else{
-                $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-down"></span>');
-            }
-            $.get("/Fy/up/", {
-				wid: 42755,
-				id: 87,
-				score: tScore
-			});
-            return false;
-        }
-        else{
-            continue;    
-        }
-    };
+
+
+		})
+		
+		// return;
+   
+}
+
+function show_final_result(type){
+	
+	
+	if(type == 0){
+		// 查看成绩
+	}else{
+		// 进入关注界面
+	}
+	
+  $(".panel-body").hide();
+
+
+	if(type==0){
+		$(".js_result").eq(0).show();
+	}else{
+		$('#panel4').show();
+		$(".js_result").eq(1).show();
+	}
+
+  // if(i>(total/2)){
+ //      $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-up"></span>');
+ //  }
+ //  else{
+ //      $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-down"></span>');
+ //  }
+
+
 }
 
 // 多选 
@@ -355,8 +433,13 @@ var GET_Q_URL = 'http://2.dabuu.sinaapp.com/getquestions.php'
 Zepto(function($){
     $('.loads').hide();	
 		
+		$('#subscript_a_id').attr('href',main_weixin_url);
+		
 		var aid = getQueryStringByName('aid');
 		var uid = getQueryStringByName('uid')
+		
+		user.aid = aid;
+		user.uid = uid;
 		
 		alert(aid+'-'+uid);
 		
@@ -374,8 +457,6 @@ Zepto(function($){
 					user.uid = '0';
 					user.enable = false;
 				}
-				
-				
 			}else{
 				alert('服务器返回status=false');
 			}
