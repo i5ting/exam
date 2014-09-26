@@ -130,6 +130,7 @@ https://www.npmjs.org/package/handlebars
 - [ ] 每道题限时30秒
 - [ ] 每天5道题
 - [ ] 改成ajax
+
 获取用户信息的api，微信增加了一个字段subscribe,如果值为0的话，说明没有关注，如果值为1的话，则说明已经关注了
  
 - aid是代理账户
@@ -304,8 +305,9 @@ today_rate  =  击败多少同行 ( 0 -100)
 http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd
 
 
+下一个（）
 
-
+活动规则文案
 查看答案
 开始答题
 

@@ -150,7 +150,7 @@ function result(t){
 		   
 				
 			}else{
-				alert('服务器返回status=false');
+				//alert('服务器返回status=false');
 				if(result>=50){
 					show_final_result(0);
 				}else{
@@ -167,8 +167,7 @@ function result(t){
 }
 
 function show_final_result(type){
-	
-	
+
 	if(type == 0){
 		// 查看成绩
 	}else{
@@ -177,22 +176,15 @@ function show_final_result(type){
 	
   $(".panel-body").hide();
 
-
 	if(type==0){
 		$(".js_result").eq(0).show();
+		$(".js_result").eq(0).find('div').show();
 	}else{
 		$('#panel4').show();
 		$(".js_result").eq(1).show();
+		// 强制展示，改不了，以后一定要查到原因
+		$(".js_result").eq(1).find('div').show();
 	}
-
-  // if(i>(total/2)){
- //      $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-up"></span>');
- //  }
- //  else{
- //      $('#sicon').html('<span class="glyphiconsang glyphiconsang-thumbs-down"></span>');
- //  }
-
-
 }
 
 // 多选 
@@ -441,7 +433,7 @@ Zepto(function($){
 		user.aid = aid;
 		user.uid = uid;
 		
-		alert(aid+'-'+uid);
+		// alert(aid+'-'+uid);
 		
 		var qs = '?aid='+aid+'&uid='+uid+''
 		
@@ -458,7 +450,7 @@ Zepto(function($){
 					user.enable = false;
 				}
 			}else{
-				alert('服务器返回status=false');
+				// alert('服务器返回status=false');
 			}
 			console.log(data);
 			console.log(user);
