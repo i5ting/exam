@@ -291,10 +291,11 @@ today_rate  =  击败多少同行 ( 0 -100)
 
 
 
+- dati.html?aid=xx&&uid=xx
+- jieguo.html?aid=xx&&uid=xx
 
 
 
+财付通需要提供：
 
-
-
-
+http://mp.weixin.qq.com/s?__biz=MzA3ODk1NzQxNA==&mid=200904455&idx=1&sn=39486707ffef126a1ca767a319713dad#rd

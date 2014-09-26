@@ -336,8 +336,52 @@ function show_current_status(t){
 	}
 }
 
+/**
+ * 根据QueryString参数名称获取值
+ */
+function getQueryStringByName(name){
+	var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+
+	if(result == null || result.length < 1){
+	   return "";
+	}
+
+	return result[1];
+}
+
+
+var GET_Q_URL = 'http://2.dabuu.sinaapp.com/getquestions.php'
+
 Zepto(function($){
     $('.loads').hide();	
+		
+		var aid = getQueryStringByName('aid');
+		var uid = getQueryStringByName('uid')
+		
+		alert(aid+'-'+uid);
+		
+		var qs = '?aid='+aid+'&uid='+uid+''
+		
+		$.getJSON(GET_Q_URL + qs,function(data){
+			if(data.status == true){
+				var obj = data.data;
+				
+				if(obj.user_id > 0){
+					user.uid = obj.user_id;
+					user.enable = true;
+					alert('user enable');
+				}else{
+					user.uid = '0';
+					user.enable = false;
+				}
+				
+				
+			}else{
+				alert('服务器返回status=false');
+			}
+			console.log(data);
+			console.log(user);
+		})
 })
 
 WeixinApi.ready(function(Api) {
@@ -346,8 +390,8 @@ WeixinApi.ready(function(Api) {
         "appId": "wx6987e3e535ea35fe",
         "imgUrl" : 'http://weixiaoxinpic.qiniudn.com/Public/upload/42755/54082eb7c71e3.jpg',
         "link" : 'http://wap.weixiaoxin.com/Fy/index/?wid=42755&id=87&r=99517',
-        "desc" : '刚在河南方言考试中，得了[n]分，你也来测试一下吧！',
-        "title" : '在河南方言考试中我获得了[n]分，足厉害啊！'
+        "desc" : '刚在会计考试中，得了[n]分，你也来测试一下吧！',
+        "title" : '在会计考试中我获得了[n]分，足厉害啊！'
     };
     // 分享的回调
     var wxCallbacks = {
