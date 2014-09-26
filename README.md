@@ -131,3 +131,170 @@ https://www.npmjs.org/package/handlebars
 
 获取用户信息的api，微信增加了一个字段subscribe,如果值为0的话，说明没有关注，如果值为1的话，则说明已经关注了
  
+
+
+答题， 未关注
+http://2.dabuu.sinaapp.com/getquestions.php?aid=18e6255ebbf2d72f64625c63f29c600d&uid=o123127fsdouvpz
+http://2.dabuu.sinaapp.com/getresult.php?aid=18e6255ebbf2d72f64625c63f29c600d&uid=o123127fsdouvpz
+
+未答题， 已关注
+http://2.dabuu.sinaapp.com/getquestions.php?aid=18e6255ebbf2d72f64625c63f29c600d&uid=oPpghuGYJAi8c1iyp0-y9GaU1wM0
+http://2.dabuu.sinaapp.com/getresult.php?aid=18e6255ebbf2d72f64625c63f29c600d&uid=oPpghuGYJAi8c1iyp0-y9GaU1wM0
+
+
+答题页面的url : question.html?aid=xxxxx&uid=wx_open_id
+
+============================  获取题目 getquestioninfo.json?agent=xxxx&token=wx_open_id  ============================
+{
+	"status":true,
+	"data":{
+		"user_id": 1010,
+		"is_answered": true; (这里 是显示 用户是否今天打过题了， 如果打过题了， 直接跳转到 结果页面， 如果今天没答题，则继续显示题目)
+		"questions":[
+			{
+				"id": 22,
+				"label":"这里是22题干这里是22题干这里是22题干这里是22题干这里是22题干",
+				"type";1, (这里 是题目的类型， type =1 单选， type=2 多选)
+				"answers":[
+					{
+						"label":"许久了"
+					},
+					{
+						"label":"注意没注意",
+						"is_answer":true
+					},
+					{
+						"label":"呼噜呼噜"
+					},
+					{
+						"label":"嘘嘘"
+					}
+				]
+			},
+			{
+				"id": 44,
+				"label":"这里是44题干这里是44题干这里是44题干这里是44题干这里是44题干",
+				"type";2,
+				"answers":[
+					{
+						"label":"许久了"
+					},
+					{
+						"label":"注意没注意",
+						"is_answer":true
+					},
+					{
+						"label":"呼噜呼噜"
+					},
+					{
+						"label":"嘘嘘"
+					}
+				]
+			}
+			
+		]
+	}
+}
+
+
+============================  提交用户答题的信息结果  ============================
+
+POST: user_id=1010&q_11=1{#$}2_1&&q_22=3_0
+
+解释：
+user_id=1010 是从 getquestioninfo.json 获取 的user_id
+q_11=1{#$}2_1  
+	q_11 中 11是 "questions"."id"
+	1{#$}2 是 用户 多选的答案
+	1 是 用户答对
+	
+q_22=3_0
+	3 用户 单选的答案
+	0 是 用户答错
+
+
+
+
+============================  提交用户答题结果后 返回的值  getresult.json ============================
+返回的格式 如下：
+{
+	"status": true,
+	"data": {
+		"user": "user_id",
+		"focus": 1,
+		"today": 4,
+		"total": 100,
+		"today_rate": 80,
+		"questions":[  (这里是 结果里面显示解释的部分)
+        			{
+        				"id": 22,
+        				"label":"这里是22题干这里是22题干这里是22题干这里是22题干这里是22题干",
+        				"type";1,
+        				"explain":[
+        					{
+        						"label":"许久了"
+        					},
+        					{
+        						"label":"注意没注意",
+        					},
+        					{
+        						"label":"呼噜呼噜"
+        					},
+        					{
+        						"label":"嘘嘘"
+        					}
+        				]
+        			},
+        			{
+        				"id": 44,
+        				"label":"这里是44题干这里是44题干这里是44题干这里是44题干这里是44题干",
+        				"type";1,
+        				"explain":[
+        					{
+        						"label":"许久了"
+        					},
+        					{
+        						"label":"注意没注意",
+        					},
+        					{
+        						"label":"呼噜呼噜"
+        					},
+        					{
+        						"label":"嘘嘘"
+        					}
+        				]
+        			}
+
+        		]
+	}
+}
+status =true 正常返回， 
+focus = 1 是关注， 0 是没关注 
+today = 今天答对题数 （0-5）
+total = 总答对题数 (0+）
+today_rate  =  击败多少同行 ( 0 -100)
+
+{
+	"status": false, 
+	"data": {}
+}
+
+
+## 流程
+
+- 如果未关注
+- 跳转到关注界面
+- 然后关注成功可看到答案（答案里有炫耀一下）
+
+- 如果已关注
+- 点击查看答案可看到答案（答案里有炫耀一下）
+
+
+
+
+
+
+
+
+
+
