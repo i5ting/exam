@@ -554,9 +554,10 @@ function my(){
 	//横向滚动
 	var myScroll = new IScroll('#wrapper', {
 		scrollX: true,
+		// snap: '.js_answer',
+		scrollY: false,
 		momentum: false,
 		snap: true,
-		// snap: '.tab_content',
 		snapSpeed: 400,
 		keyBindings: true
 	});
@@ -589,6 +590,8 @@ Zepto(function($){
 		
 		
 		my();
+		
+		$(".js_answer").show();
 		// alert(aid+'-'+uid);
 		
 		var qs = '?aid='+aid+'&uid='+uid+''
